@@ -1,0 +1,8 @@
+//Vzemane na cifri ot chislo
+
+int chislo = 4320;
+
+int a1 = (chislo / 1000) % 10;
+int a2 = (chislo / 100) % 10;
+int a3 = (chislo / 10) % 10;
+int a4 = (chislo / 1) % 10;
