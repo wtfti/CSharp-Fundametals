@@ -15,7 +15,7 @@ class FormatNumbers
         Console.WriteLine("|{0,-10:X}|{1}|{2,10:0.##}|{3,-10:0.000}|", firstNUmber, ToBin(firstNUmber, 10), secondNUmber, thirdNumber);
     }
 
-    public static string ToBin(int value, int len)
+    public static string ToBin(int value, int len) // len is binary size
     {
         return (len > 1 ? ToBin(value >> 1, len - 1) : null) + "01"[value & 1];
     }
