@@ -1,68 +1,29 @@
 ﻿using System;
 
-class Program
+internal class Program
 {
-    static void Main()
+    private static void Main()
     {
-        long bit = long.Parse(Console.ReadLine()); ;
-        Console.WriteLine(bit);
-        int numberOfSieves = int.Parse(Console.ReadLine()); ;
-        long[] sieves = new long[numberOfSieves+1];
-        sieves[0] = bit;
-        for (int i = 1; i < numberOfSieves; i++)
+        int ax = int.Parse(Console.ReadLine());
+        int ay = int.Parse(Console.ReadLine());
+        int bx = int.Parse(Console.ReadLine());
+        int by = int.Parse(Console.ReadLine());
+        int cx = int.Parse(Console.ReadLine());
+        int cy = int.Parse(Console.ReadLine());
+        double valueA = Math.Sqrt(Math.Pow((cx - bx), 2) + Math.Pow((cy - by), 2));
+        double valueB = Math.Sqrt(Math.Pow((ax - cx), 2) + Math.Pow((ay - cy), 2));
+        double valueC = Math.Sqrt(Math.Pow((ax - bx), 2) + Math.Pow((ay - by), 2));
+        bool formTri = valueA + valueB > valueC && 
+            valueB + valueC > valueA && valueA + valueC > valueB;
+        if (!formTri)
         {
-            sieves[i] = long.Parse(Console.ReadLine());
+            Console.WriteLine("No\r\n{0:f2}",valueA+valueB);
         }
-        long currentBit = 0;
-        long currentSieve = 0;
-        long mask = 0;
-        long mask2 = 0;
-        long result = 0;
-        int count = 0;
-
-        for (int i = 0; i < numberOfSieves; i++)
+        else
         {
-            if (i == 0)
-            {
-                currentBit = sieves[i];
-                currentSieve = sieves[i + 1];
-            }
-            else
-            {
-                currentBit = result;
-                currentSieve = sieves[i + 1];
-                result = 0;
-            }
-            for (int j = 0; j < 64; j++)
-            {
-                if (j == 0)
-                {
-                    mask = currentBit & 1;
-                    mask2 = (currentSieve & 1);
-                }
-                else
-                {
-                    mask = (currentBit >> j) & 1;
-                    mask2 = (currentSieve >> j) & 1;
-                }
-                if (mask == 1 && mask2 == 0)
-                {
-                    if (j == 0)
-                    {
-                        result |= 1;
-                    }
-                    else
-                    {
-                        result |= (1 << j);
-                    }
-                    if (i == numberOfSieves-1)
-                    {
-                        count++;
-                    }
-                }
-            }
-            Console.WriteLine(result);
+            double p = (valueA + valueC + valueB) / 2;
+            double areaHeron = Math.Sqrt((p * ((p - valueA) * (p - valueB) * (p - valueC))));
+            Console.WriteLine("Yes\r\n{0:f2}", areaHeron);
         }
-        Console.WriteLine(count);
     }
 }
