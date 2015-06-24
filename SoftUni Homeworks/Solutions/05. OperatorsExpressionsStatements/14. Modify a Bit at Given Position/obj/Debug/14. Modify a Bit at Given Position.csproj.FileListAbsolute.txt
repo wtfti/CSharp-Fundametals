@@ -1,0 +1,5 @@
+D:\!C#\HomeworkOperatorsExpressionsStatements\14. Modify a Bit at Given Position\bin\Debug\_14.Modify_a_Bit_at_Given_Position.exe.config
+D:\!C#\HomeworkOperatorsExpressionsStatements\14. Modify a Bit at Given Position\bin\Debug\_14.Modify_a_Bit_at_Given_Position.exe
+D:\!C#\HomeworkOperatorsExpressionsStatements\14. Modify a Bit at Given Position\bin\Debug\_14.Modify_a_Bit_at_Given_Position.pdb
+D:\!C#\HomeworkOperatorsExpressionsStatements\14. Modify a Bit at Given Position\obj\Debug\_14.Modify_a_Bit_at_Given_Position.exe
+D:\!C#\HomeworkOperatorsExpressionsStatements\14. Modify a Bit at Given Position\obj\Debug\_14.Modify_a_Bit_at_Given_Position.pdb

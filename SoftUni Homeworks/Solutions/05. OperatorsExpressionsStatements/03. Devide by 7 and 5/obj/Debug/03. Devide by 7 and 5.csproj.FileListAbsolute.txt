@@ -1,0 +1,6 @@
+D:\!C#\HomeworkOperatorsExpressionsStatements\03. Devide by 7 and 5\bin\Debug\_03.Devide_by_7_and_5.exe.config
+D:\!C#\HomeworkOperatorsExpressionsStatements\03. Devide by 7 and 5\bin\Debug\_03.Devide_by_7_and_5.exe
+D:\!C#\HomeworkOperatorsExpressionsStatements\03. Devide by 7 and 5\bin\Debug\_03.Devide_by_7_and_5.pdb
+D:\!C#\HomeworkOperatorsExpressionsStatements\03. Devide by 7 and 5\obj\Debug\_03.Devide_by_7_and_5.exe
+D:\!C#\HomeworkOperatorsExpressionsStatements\03. Devide by 7 and 5\obj\Debug\_03.Devide_by_7_and_5.pdb
+D:\!C#\HomeworkOperatorsExpressionsStatements\03. Devide by 7 and 5\obj\Debug\03. Devide by 7 and 5.csprojResolveAssemblyReference.cache

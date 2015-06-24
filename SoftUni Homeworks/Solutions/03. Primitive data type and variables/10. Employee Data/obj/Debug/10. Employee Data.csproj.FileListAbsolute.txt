@@ -1,0 +1,5 @@
+D:\!C#\Primitive data type and variables - Homework\10. Employee Data\bin\Debug\_10.Employee_Data.exe.config
+D:\!C#\Primitive data type and variables - Homework\10. Employee Data\bin\Debug\_10.Employee_Data.exe
+D:\!C#\Primitive data type and variables - Homework\10. Employee Data\bin\Debug\_10.Employee_Data.pdb
+D:\!C#\Primitive data type and variables - Homework\10. Employee Data\obj\Debug\_10.Employee_Data.exe
+D:\!C#\Primitive data type and variables - Homework\10. Employee Data\obj\Debug\_10.Employee_Data.pdb

@@ -1,0 +1,5 @@
+D:\!C#\Intro-Programming-Homework\PrintSequence\bin\Debug\PrintSequence.exe.config
+D:\!C#\Intro-Programming-Homework\PrintSequence\bin\Debug\PrintSequence.exe
+D:\!C#\Intro-Programming-Homework\PrintSequence\bin\Debug\PrintSequence.pdb
+D:\!C#\Intro-Programming-Homework\PrintSequence\obj\Debug\PrintSequence.exe
+D:\!C#\Intro-Programming-Homework\PrintSequence\obj\Debug\PrintSequence.pdb

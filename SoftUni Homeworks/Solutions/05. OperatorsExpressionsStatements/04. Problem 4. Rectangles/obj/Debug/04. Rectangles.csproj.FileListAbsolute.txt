@@ -1,0 +1,6 @@
+D:\!C#\HomeworkOperatorsExpressionsStatements\04. Problem 4. Rectangles\bin\Debug\_04.Problem_4.Rectangles.exe.config
+D:\!C#\HomeworkOperatorsExpressionsStatements\04. Problem 4. Rectangles\bin\Debug\_04.Problem_4.Rectangles.exe
+D:\!C#\HomeworkOperatorsExpressionsStatements\04. Problem 4. Rectangles\bin\Debug\_04.Problem_4.Rectangles.pdb
+D:\!C#\HomeworkOperatorsExpressionsStatements\04. Problem 4. Rectangles\obj\Debug\_04.Problem_4.Rectangles.exe
+D:\!C#\HomeworkOperatorsExpressionsStatements\04. Problem 4. Rectangles\obj\Debug\_04.Problem_4.Rectangles.pdb
+D:\!C#\HomeworkOperatorsExpressionsStatements\04. Problem 4. Rectangles\obj\Debug\04. Rectangles.csprojResolveAssemblyReference.cache

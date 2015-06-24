@@ -1,0 +1,5 @@
+D:\!C#\Loops-Homework\03. Min, Max, Sum and Average of N Numbers\bin\Debug\_03.Min__Max__Sum_and_Average_of_N_Numbers.exe.config
+D:\!C#\Loops-Homework\03. Min, Max, Sum and Average of N Numbers\bin\Debug\_03.Min__Max__Sum_and_Average_of_N_Numbers.exe
+D:\!C#\Loops-Homework\03. Min, Max, Sum and Average of N Numbers\bin\Debug\_03.Min__Max__Sum_and_Average_of_N_Numbers.pdb
+D:\!C#\Loops-Homework\03. Min, Max, Sum and Average of N Numbers\obj\Debug\_03.Min__Max__Sum_and_Average_of_N_Numbers.exe
+D:\!C#\Loops-Homework\03. Min, Max, Sum and Average of N Numbers\obj\Debug\_03.Min__Max__Sum_and_Average_of_N_Numbers.pdb

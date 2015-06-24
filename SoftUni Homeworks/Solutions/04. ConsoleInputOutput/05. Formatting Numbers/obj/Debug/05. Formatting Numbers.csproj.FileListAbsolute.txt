@@ -1,0 +1,5 @@
+D:\!C#\ConsoleInputOutput-Homework\05. Formatting Numbers\bin\Debug\_05.Formatting_Numbers.exe.config
+D:\!C#\ConsoleInputOutput-Homework\05. Formatting Numbers\bin\Debug\_05.Formatting_Numbers.exe
+D:\!C#\ConsoleInputOutput-Homework\05. Formatting Numbers\bin\Debug\_05.Formatting_Numbers.pdb
+D:\!C#\ConsoleInputOutput-Homework\05. Formatting Numbers\obj\Debug\_05.Formatting_Numbers.exe
+D:\!C#\ConsoleInputOutput-Homework\05. Formatting Numbers\obj\Debug\_05.Formatting_Numbers.pdb

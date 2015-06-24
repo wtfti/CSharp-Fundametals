@@ -1,0 +1,6 @@
+D:\!C#\Primitive data type and variables - Homework\01. Declare Variables\bin\Debug\_01.Declare_Variables.exe.config
+D:\!C#\Primitive data type and variables - Homework\01. Declare Variables\bin\Debug\_01.Declare_Variables.exe
+D:\!C#\Primitive data type and variables - Homework\01. Declare Variables\bin\Debug\_01.Declare_Variables.pdb
+D:\!C#\Primitive data type and variables - Homework\01. Declare Variables\obj\Debug\01. Declare Variables.csprojResolveAssemblyReference.cache
+D:\!C#\Primitive data type and variables - Homework\01. Declare Variables\obj\Debug\_01.Declare_Variables.exe
+D:\!C#\Primitive data type and variables - Homework\01. Declare Variables\obj\Debug\_01.Declare_Variables.pdb

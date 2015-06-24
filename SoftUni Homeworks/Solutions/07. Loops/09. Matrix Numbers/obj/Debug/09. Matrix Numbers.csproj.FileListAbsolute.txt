@@ -1,0 +1,5 @@
+D:\!C#\Loops-Homework\09. Matrix Numbers\bin\Debug\_09.Matrix_Numbers.exe.config
+D:\!C#\Loops-Homework\09. Matrix Numbers\bin\Debug\_09.Matrix_Numbers.exe
+D:\!C#\Loops-Homework\09. Matrix Numbers\bin\Debug\_09.Matrix_Numbers.pdb
+D:\!C#\Loops-Homework\09. Matrix Numbers\obj\Debug\_09.Matrix_Numbers.exe
+D:\!C#\Loops-Homework\09. Matrix Numbers\obj\Debug\_09.Matrix_Numbers.pdb

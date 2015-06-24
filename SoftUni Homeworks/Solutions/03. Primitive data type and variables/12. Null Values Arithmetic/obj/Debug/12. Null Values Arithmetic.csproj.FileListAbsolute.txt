@@ -1,0 +1,6 @@
+D:\!C#\Primitive data type and variables - Homework\12. Null Values Arithmetic\bin\Debug\_12.Null_Values_Arithmetic.exe.config
+D:\!C#\Primitive data type and variables - Homework\12. Null Values Arithmetic\bin\Debug\_12.Null_Values_Arithmetic.exe
+D:\!C#\Primitive data type and variables - Homework\12. Null Values Arithmetic\bin\Debug\_12.Null_Values_Arithmetic.pdb
+D:\!C#\Primitive data type and variables - Homework\12. Null Values Arithmetic\obj\Debug\12. Null Values Arithmetic.csprojResolveAssemblyReference.cache
+D:\!C#\Primitive data type and variables - Homework\12. Null Values Arithmetic\obj\Debug\_12.Null_Values_Arithmetic.exe
+D:\!C#\Primitive data type and variables - Homework\12. Null Values Arithmetic\obj\Debug\_12.Null_Values_Arithmetic.pdb

@@ -1,0 +1,6 @@
+D:\!C#\Intro-Programming-Homework\Square Root\bin\Debug\Square Root.exe.config
+D:\!C#\Intro-Programming-Homework\Square Root\obj\Debug\Square Root.exe
+D:\!C#\Intro-Programming-Homework\Square Root\obj\Debug\Square Root.pdb
+D:\!C#\Intro-Programming-Homework\Square Root\bin\Debug\Square Root.exe
+D:\!C#\Intro-Programming-Homework\Square Root\bin\Debug\Square Root.pdb
+D:\!C#\Intro-Programming-Homework\Square Root\obj\Debug\05. SquareRoot.csprojResolveAssemblyReference.cache

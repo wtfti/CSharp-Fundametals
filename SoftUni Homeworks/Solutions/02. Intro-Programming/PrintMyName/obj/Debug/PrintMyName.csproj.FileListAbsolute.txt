@@ -1,0 +1,5 @@
+D:\!C#\Intro-Programming-Homework\PrintMyName\bin\Debug\PrintMyName.exe.config
+D:\!C#\Intro-Programming-Homework\PrintMyName\bin\Debug\PrintMyName.exe
+D:\!C#\Intro-Programming-Homework\PrintMyName\bin\Debug\PrintMyName.pdb
+D:\!C#\Intro-Programming-Homework\PrintMyName\obj\Debug\PrintMyName.exe
+D:\!C#\Intro-Programming-Homework\PrintMyName\obj\Debug\PrintMyName.pdb

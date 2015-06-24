@@ -1,0 +1,7 @@
+D:\!C#\HomeworkOperatorsExpressionsStatements\16. Bit Exchange(Advanced)\bin\Debug\_16.Bit_Exchange_Advanced_.dll
+D:\!C#\HomeworkOperatorsExpressionsStatements\16. Bit Exchange(Advanced)\bin\Debug\_16.Bit_Exchange_Advanced_.pdb
+D:\!C#\HomeworkOperatorsExpressionsStatements\16. Bit Exchange(Advanced)\obj\Debug\16. Bit Exchange(Advanced).csprojResolveAssemblyReference.cache
+D:\!C#\HomeworkOperatorsExpressionsStatements\16. Bit Exchange(Advanced)\obj\Debug\_16.Bit_Exchange_Advanced_.dll
+D:\!C#\HomeworkOperatorsExpressionsStatements\16. Bit Exchange(Advanced)\obj\Debug\_16.Bit_Exchange_Advanced_.pdb
+D:\!C#\HomeworkOperatorsExpressionsStatements\16. Bit Exchange(Advanced)\bin\Debug\BigIntegerExtensions.dll
+D:\!C#\HomeworkOperatorsExpressionsStatements\16. Bit Exchange(Advanced)\bin\Debug\BigIntegerExtensions.pdb

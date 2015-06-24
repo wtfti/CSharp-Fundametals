@@ -1,0 +1,6 @@
+D:\!C#\HomeworkOperatorsExpressionsStatements\02. Gravitation on the Moon\bin\Debug\_02.Gravitation_on_the_Moon.exe.config
+D:\!C#\HomeworkOperatorsExpressionsStatements\02. Gravitation on the Moon\bin\Debug\_02.Gravitation_on_the_Moon.exe
+D:\!C#\HomeworkOperatorsExpressionsStatements\02. Gravitation on the Moon\bin\Debug\_02.Gravitation_on_the_Moon.pdb
+D:\!C#\HomeworkOperatorsExpressionsStatements\02. Gravitation on the Moon\obj\Debug\_02.Gravitation_on_the_Moon.exe
+D:\!C#\HomeworkOperatorsExpressionsStatements\02. Gravitation on the Moon\obj\Debug\_02.Gravitation_on_the_Moon.pdb
+D:\!C#\HomeworkOperatorsExpressionsStatements\02. Gravitation on the Moon\obj\Debug\02. Gravitation on the Moon.csprojResolveAssemblyReference.cache

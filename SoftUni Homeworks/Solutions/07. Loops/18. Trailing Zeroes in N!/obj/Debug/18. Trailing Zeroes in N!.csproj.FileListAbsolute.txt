@@ -1,0 +1,5 @@
+D:\!C#\Loops-Homework\18. Trailing Zeroes in N!\bin\Debug\_18.Trailing_Zeroes_in_N_.exe.config
+D:\!C#\Loops-Homework\18. Trailing Zeroes in N!\bin\Debug\_18.Trailing_Zeroes_in_N_.exe
+D:\!C#\Loops-Homework\18. Trailing Zeroes in N!\bin\Debug\_18.Trailing_Zeroes_in_N_.pdb
+D:\!C#\Loops-Homework\18. Trailing Zeroes in N!\obj\Debug\_18.Trailing_Zeroes_in_N_.exe
+D:\!C#\Loops-Homework\18. Trailing Zeroes in N!\obj\Debug\_18.Trailing_Zeroes_in_N_.pdb

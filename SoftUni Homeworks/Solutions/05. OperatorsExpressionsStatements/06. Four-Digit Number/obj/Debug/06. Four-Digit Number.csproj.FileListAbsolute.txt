@@ -1,0 +1,6 @@
+D:\!C#\HomeworkOperatorsExpressionsStatements\06. Four-Digit Number\bin\Debug\_06.Four_Digit_Number.exe.config
+D:\!C#\HomeworkOperatorsExpressionsStatements\06. Four-Digit Number\obj\Debug\06. Four-Digit Number.csprojResolveAssemblyReference.cache
+D:\!C#\HomeworkOperatorsExpressionsStatements\06. Four-Digit Number\bin\Debug\_06.Four_Digit_Number.exe
+D:\!C#\HomeworkOperatorsExpressionsStatements\06. Four-Digit Number\bin\Debug\_06.Four_Digit_Number.pdb
+D:\!C#\HomeworkOperatorsExpressionsStatements\06. Four-Digit Number\obj\Debug\_06.Four_Digit_Number.exe
+D:\!C#\HomeworkOperatorsExpressionsStatements\06. Four-Digit Number\obj\Debug\_06.Four_Digit_Number.pdb

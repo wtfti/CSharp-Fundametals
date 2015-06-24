@@ -1,0 +1,6 @@
+D:\!C#\ConsoleInputOutput-Homework\08. Numbers from 1 to n\bin\Debug\Numbers from 1 to n.exe.config
+D:\!C#\ConsoleInputOutput-Homework\08. Numbers from 1 to n\bin\Debug\Numbers from 1 to n.exe
+D:\!C#\ConsoleInputOutput-Homework\08. Numbers from 1 to n\bin\Debug\Numbers from 1 to n.pdb
+D:\!C#\ConsoleInputOutput-Homework\08. Numbers from 1 to n\obj\Debug\08. Numbers from 1 to n.csprojResolveAssemblyReference.cache
+D:\!C#\ConsoleInputOutput-Homework\08. Numbers from 1 to n\obj\Debug\Numbers from 1 to n.exe
+D:\!C#\ConsoleInputOutput-Homework\08. Numbers from 1 to n\obj\Debug\Numbers from 1 to n.pdb

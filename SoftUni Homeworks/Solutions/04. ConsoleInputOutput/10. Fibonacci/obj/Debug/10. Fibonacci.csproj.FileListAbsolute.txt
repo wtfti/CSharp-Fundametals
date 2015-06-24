@@ -1,0 +1,5 @@
+D:\!C#\ConsoleInputOutput-Homework\10. Fibonacci\bin\Debug\_10.Fibonacci.exe.config
+D:\!C#\ConsoleInputOutput-Homework\10. Fibonacci\bin\Debug\_10.Fibonacci.exe
+D:\!C#\ConsoleInputOutput-Homework\10. Fibonacci\bin\Debug\_10.Fibonacci.pdb
+D:\!C#\ConsoleInputOutput-Homework\10. Fibonacci\obj\Debug\_10.Fibonacci.exe
+D:\!C#\ConsoleInputOutput-Homework\10. Fibonacci\obj\Debug\_10.Fibonacci.pdb

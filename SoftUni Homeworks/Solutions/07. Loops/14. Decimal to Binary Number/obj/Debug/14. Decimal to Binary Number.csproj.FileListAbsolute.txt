@@ -1,0 +1,5 @@
+D:\!C#\Loops-Homework\14. Decimal to Binary Number\bin\Debug\_14.Decimal_to_Binary_Number.exe.config
+D:\!C#\Loops-Homework\14. Decimal to Binary Number\bin\Debug\_14.Decimal_to_Binary_Number.exe
+D:\!C#\Loops-Homework\14. Decimal to Binary Number\bin\Debug\_14.Decimal_to_Binary_Number.pdb
+D:\!C#\Loops-Homework\14. Decimal to Binary Number\obj\Debug\_14.Decimal_to_Binary_Number.exe
+D:\!C#\Loops-Homework\14. Decimal to Binary Number\obj\Debug\_14.Decimal_to_Binary_Number.pdb

@@ -1,0 +1,5 @@
+D:\!C#\Loops-Homework\01. Numbers from 1 to N\bin\Debug\_01.Numbers_from_1_to_N.exe.config
+D:\!C#\Loops-Homework\01. Numbers from 1 to N\bin\Debug\_01.Numbers_from_1_to_N.exe
+D:\!C#\Loops-Homework\01. Numbers from 1 to N\bin\Debug\_01.Numbers_from_1_to_N.pdb
+D:\!C#\Loops-Homework\01. Numbers from 1 to N\obj\Debug\_01.Numbers_from_1_to_N.exe
+D:\!C#\Loops-Homework\01. Numbers from 1 to N\obj\Debug\_01.Numbers_from_1_to_N.pdb
