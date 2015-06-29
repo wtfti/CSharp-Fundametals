@@ -1,0 +1,5 @@
+D:\!C#\CSharp-Advanced-Topics-Homework\06. Remove Names\bin\Debug\_06.Remove_Names.exe.config
+D:\!C#\CSharp-Advanced-Topics-Homework\06. Remove Names\bin\Debug\_06.Remove_Names.exe
+D:\!C#\CSharp-Advanced-Topics-Homework\06. Remove Names\bin\Debug\_06.Remove_Names.pdb
+D:\!C#\CSharp-Advanced-Topics-Homework\06. Remove Names\obj\Debug\_06.Remove_Names.exe
+D:\!C#\CSharp-Advanced-Topics-Homework\06. Remove Names\obj\Debug\_06.Remove_Names.pdb
