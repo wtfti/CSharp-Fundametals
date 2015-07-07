@@ -1,84 +1,80 @@
 ﻿using System;
 using System.Linq;
 
-class BitsAtCrossRoads
+class Program
 {
     public static void Main()
     {
         int sizeOfBoard = int.Parse(Console.ReadLine());
-        int[,] bitMatrix = new int[sizeOfBoard, sizeOfBoard];
+        int[] bitMatrix = new int[sizeOfBoard];
         string[] cordinates = Console.ReadLine().Split().ToArray();
         int crossRoads = 0;
         while (cordinates[0] != "end")
         {
+            crossRoads++;
             int row = int.Parse(cordinates[0]);
             int col = int.Parse(cordinates[1]);
-            int rowCounter = row - 1;
-            int colCounter = col + 1;
-
-            bitMatrix[row, col] |= (1 << col);
+            int rowCounter = row;
+            int colCounter = col;
+            int mask;
 
             while (rowCounter >= 0 && colCounter < sizeOfBoard)
             {
-                crossRoads += CalcCrossRoads(bitMatrix, rowCounter, colCounter);
-                bitMatrix[rowCounter, colCounter] |= (1 << colCounter);
+                mask = (bitMatrix[rowCounter] >> colCounter) & 1;
+                if (mask == 1)
+                {
+                    crossRoads++;
+                }
+                bitMatrix[rowCounter] |= (1 << colCounter);
                 rowCounter--;
                 colCounter++;
             }
-            //PrintMatrix(bitMatrix,sizeOfBoard);
             rowCounter = row + 1;
             colCounter = col - 1;
             while (rowCounter < sizeOfBoard && colCounter >= 0)
             {
-                crossRoads += CalcCrossRoads(bitMatrix, rowCounter, colCounter);
-                bitMatrix[rowCounter, colCounter] |= (1 << colCounter);
+                mask = (bitMatrix[rowCounter] >> colCounter) & 1;
+                if (mask == 1)
+                {
+                    crossRoads++;
+                }
+                bitMatrix[rowCounter] |= (1 << colCounter);
                 rowCounter++;
                 colCounter--;
             }
             rowCounter = row + 1;
             colCounter = col + 1;
-            //PrintMatrix(bitMatrix, sizeOfBoard);
             while (rowCounter < sizeOfBoard && colCounter < sizeOfBoard)
             {
-                crossRoads += CalcCrossRoads(bitMatrix, rowCounter, colCounter);
-                bitMatrix[rowCounter, colCounter] |= (1 << colCounter);
+                mask = (bitMatrix[rowCounter] >> colCounter) & 1;
+                if (mask == 1)
+                {
+                    crossRoads++;
+                }
+                bitMatrix[rowCounter] |= (1 << colCounter);
                 rowCounter++;
                 colCounter++;
-
             }
             rowCounter = row - 1;
             colCounter = col - 1;
-            //PrintMatrix(bitMatrix, sizeOfBoard);
             while (rowCounter >= 0 && colCounter >= 0)
             {
-                crossRoads += CalcCrossRoads(bitMatrix, rowCounter, colCounter);
-                bitMatrix[rowCounter, colCounter] |= (1 << colCounter);
+                mask = (bitMatrix[rowCounter] >> colCounter) & 1;
+                if (mask == 1)
+                {
+                    crossRoads++;
+                }
+                bitMatrix[rowCounter] |= (1 << colCounter);
                 rowCounter--;
                 colCounter--;
             }
-            //PrintMatrix(bitMatrix, sizeOfBoard);
             cordinates = Console.ReadLine().Split().ToArray();
         }
 
-        for (int row = 0; row < sizeOfBoard; row++)
+        for (int index = 0; index < sizeOfBoard; index++)
         {
-            int currentBit = 0;
-            for (int cols = 0; cols < sizeOfBoard; cols++)
-            {
-                currentBit += bitMatrix[row, cols];
-            }
-            Console.WriteLine(currentBit);
+            Console.WriteLine(bitMatrix[index]);
         }
         Console.WriteLine(crossRoads);
-    }
-
-    private static int CalcCrossRoads(int[,] matrix, int currentRow, int currentCol)
-    {
-        int numberOfCrossroads = 0;
-        if (((matrix[currentRow,currentCol] >> currentCol) & 1) == 1)
-        {
-            numberOfCrossroads++;
-        }
-        return numberOfCrossroads;
     }
 }
