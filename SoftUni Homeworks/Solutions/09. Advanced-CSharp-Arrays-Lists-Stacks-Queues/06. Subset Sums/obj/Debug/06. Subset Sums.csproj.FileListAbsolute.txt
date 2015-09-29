@@ -1,0 +1,6 @@
+D:\!C#\Advanced-CSharp-Arrays-Lists-Stacks-Queues\06. Subset Sums\bin\Debug\_06.Subset_Sums.exe.config
+D:\!C#\Advanced-CSharp-Arrays-Lists-Stacks-Queues\06. Subset Sums\bin\Debug\_06.Subset_Sums.exe
+D:\!C#\Advanced-CSharp-Arrays-Lists-Stacks-Queues\06. Subset Sums\bin\Debug\_06.Subset_Sums.pdb
+D:\!C#\Advanced-CSharp-Arrays-Lists-Stacks-Queues\06. Subset Sums\obj\Debug\06. Subset Sums.csprojResolveAssemblyReference.cache
+D:\!C#\Advanced-CSharp-Arrays-Lists-Stacks-Queues\06. Subset Sums\obj\Debug\_06.Subset_Sums.exe
+D:\!C#\Advanced-CSharp-Arrays-Lists-Stacks-Queues\06. Subset Sums\obj\Debug\_06.Subset_Sums.pdb

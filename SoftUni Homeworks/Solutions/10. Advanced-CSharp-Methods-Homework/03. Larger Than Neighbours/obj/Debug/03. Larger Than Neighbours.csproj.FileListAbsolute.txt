@@ -1,0 +1,6 @@
+D:\!C#\Advanced-CSharp-Methods-Homework\03. Larger Than Neighbours\bin\Debug\_03.Larger_Than_Neighbours.exe.config
+D:\!C#\Advanced-CSharp-Methods-Homework\03. Larger Than Neighbours\bin\Debug\_03.Larger_Than_Neighbours.exe
+D:\!C#\Advanced-CSharp-Methods-Homework\03. Larger Than Neighbours\bin\Debug\_03.Larger_Than_Neighbours.pdb
+D:\!C#\Advanced-CSharp-Methods-Homework\03. Larger Than Neighbours\obj\Debug\03. Larger Than Neighbours.csprojResolveAssemblyReference.cache
+D:\!C#\Advanced-CSharp-Methods-Homework\03. Larger Than Neighbours\obj\Debug\_03.Larger_Than_Neighbours.exe
+D:\!C#\Advanced-CSharp-Methods-Homework\03. Larger Than Neighbours\obj\Debug\_03.Larger_Than_Neighbours.pdb

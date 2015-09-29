@@ -1,0 +1,6 @@
+D:\!C#\Advanced-CSharp-MultidimensionalArrays-Sets-Dictionaries-Homework\08. Night Life\bin\Debug\_08.Night_Life.exe.config
+D:\!C#\Advanced-CSharp-MultidimensionalArrays-Sets-Dictionaries-Homework\08. Night Life\bin\Debug\_08.Night_Life.exe
+D:\!C#\Advanced-CSharp-MultidimensionalArrays-Sets-Dictionaries-Homework\08. Night Life\bin\Debug\_08.Night_Life.pdb
+D:\!C#\Advanced-CSharp-MultidimensionalArrays-Sets-Dictionaries-Homework\08. Night Life\obj\Debug\08. Night Life.csprojResolveAssemblyReference.cache
+D:\!C#\Advanced-CSharp-MultidimensionalArrays-Sets-Dictionaries-Homework\08. Night Life\obj\Debug\_08.Night_Life.exe
+D:\!C#\Advanced-CSharp-MultidimensionalArrays-Sets-Dictionaries-Homework\08. Night Life\obj\Debug\_08.Night_Life.pdb

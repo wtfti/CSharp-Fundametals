@@ -1,0 +1,6 @@
+D:\!C#\Advanced-CSharp-Methods-Homework\06. Number Calculations\bin\Debug\_06.Number_Calculations.exe.config
+D:\!C#\Advanced-CSharp-Methods-Homework\06. Number Calculations\bin\Debug\_06.Number_Calculations.exe
+D:\!C#\Advanced-CSharp-Methods-Homework\06. Number Calculations\bin\Debug\_06.Number_Calculations.pdb
+D:\!C#\Advanced-CSharp-Methods-Homework\06. Number Calculations\obj\Debug\06. Number Calculations.csprojResolveAssemblyReference.cache
+D:\!C#\Advanced-CSharp-Methods-Homework\06. Number Calculations\obj\Debug\_06.Number_Calculations.exe
+D:\!C#\Advanced-CSharp-Methods-Homework\06. Number Calculations\obj\Debug\_06.Number_Calculations.pdb

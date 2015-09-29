@@ -1,0 +1,5 @@
+D:\!C#\Advanced-CSharp-Methods-Homework\02. Last Digit of Number\bin\Debug\_02.Last_Digit_of_Number.exe.config
+D:\!C#\Advanced-CSharp-Methods-Homework\02. Last Digit of Number\bin\Debug\_02.Last_Digit_of_Number.exe
+D:\!C#\Advanced-CSharp-Methods-Homework\02. Last Digit of Number\bin\Debug\_02.Last_Digit_of_Number.pdb
+D:\!C#\Advanced-CSharp-Methods-Homework\02. Last Digit of Number\obj\Debug\_02.Last_Digit_of_Number.exe
+D:\!C#\Advanced-CSharp-Methods-Homework\02. Last Digit of Number\obj\Debug\_02.Last_Digit_of_Number.pdb

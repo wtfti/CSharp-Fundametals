@@ -1,0 +1,6 @@
+D:\!C#\Advanced-CSharp-MultidimensionalArrays-Sets-Dictionaries-Homework\03. Matrix shuffling\bin\Debug\_03.Matrix_shuffling.exe.config
+D:\!C#\Advanced-CSharp-MultidimensionalArrays-Sets-Dictionaries-Homework\03. Matrix shuffling\bin\Debug\_03.Matrix_shuffling.exe
+D:\!C#\Advanced-CSharp-MultidimensionalArrays-Sets-Dictionaries-Homework\03. Matrix shuffling\bin\Debug\_03.Matrix_shuffling.pdb
+D:\!C#\Advanced-CSharp-MultidimensionalArrays-Sets-Dictionaries-Homework\03. Matrix shuffling\obj\Debug\03. Matrix shuffling.csprojResolveAssemblyReference.cache
+D:\!C#\Advanced-CSharp-MultidimensionalArrays-Sets-Dictionaries-Homework\03. Matrix shuffling\obj\Debug\_03.Matrix_shuffling.exe
+D:\!C#\Advanced-CSharp-MultidimensionalArrays-Sets-Dictionaries-Homework\03. Matrix shuffling\obj\Debug\_03.Matrix_shuffling.pdb

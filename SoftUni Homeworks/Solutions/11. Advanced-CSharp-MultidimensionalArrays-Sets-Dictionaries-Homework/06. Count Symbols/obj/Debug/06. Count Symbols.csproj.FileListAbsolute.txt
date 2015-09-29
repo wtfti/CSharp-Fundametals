@@ -1,0 +1,6 @@
+D:\!C#\Advanced-CSharp-MultidimensionalArrays-Sets-Dictionaries-Homework\06. Count Symbols\bin\Debug\_06.Count_Symbols.exe.config
+D:\!C#\Advanced-CSharp-MultidimensionalArrays-Sets-Dictionaries-Homework\06. Count Symbols\bin\Debug\_06.Count_Symbols.exe
+D:\!C#\Advanced-CSharp-MultidimensionalArrays-Sets-Dictionaries-Homework\06. Count Symbols\bin\Debug\_06.Count_Symbols.pdb
+D:\!C#\Advanced-CSharp-MultidimensionalArrays-Sets-Dictionaries-Homework\06. Count Symbols\obj\Debug\_06.Count_Symbols.exe
+D:\!C#\Advanced-CSharp-MultidimensionalArrays-Sets-Dictionaries-Homework\06. Count Symbols\obj\Debug\_06.Count_Symbols.pdb
+D:\!C#\Advanced-CSharp-MultidimensionalArrays-Sets-Dictionaries-Homework\06. Count Symbols\obj\Debug\06. Count Symbols.csprojResolveAssemblyReference.cache

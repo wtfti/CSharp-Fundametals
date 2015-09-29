@@ -1,0 +1,6 @@
+D:\!C#\Advanced-CSharp-MultidimensionalArrays-Sets-Dictionaries-Homework\04. Sequence in Matrix\bin\Debug\_04.Sequence_in_Matrix.exe.config
+D:\!C#\Advanced-CSharp-MultidimensionalArrays-Sets-Dictionaries-Homework\04. Sequence in Matrix\obj\Debug\04. Sequence in Matrix.csprojResolveAssemblyReference.cache
+D:\!C#\Advanced-CSharp-MultidimensionalArrays-Sets-Dictionaries-Homework\04. Sequence in Matrix\bin\Debug\_04.Sequence_in_Matrix.exe
+D:\!C#\Advanced-CSharp-MultidimensionalArrays-Sets-Dictionaries-Homework\04. Sequence in Matrix\bin\Debug\_04.Sequence_in_Matrix.pdb
+D:\!C#\Advanced-CSharp-MultidimensionalArrays-Sets-Dictionaries-Homework\04. Sequence in Matrix\obj\Debug\_04.Sequence_in_Matrix.exe
+D:\!C#\Advanced-CSharp-MultidimensionalArrays-Sets-Dictionaries-Homework\04. Sequence in Matrix\obj\Debug\_04.Sequence_in_Matrix.pdb

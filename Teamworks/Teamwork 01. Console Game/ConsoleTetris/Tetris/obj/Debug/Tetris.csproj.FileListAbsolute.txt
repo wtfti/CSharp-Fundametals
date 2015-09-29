@@ -1,0 +1,6 @@
+D:\!C#\ConsoleTetris\Tetris\bin\Debug\Tetris.exe.config
+D:\!C#\ConsoleTetris\Tetris\obj\Debug\Tetris.csprojResolveAssemblyReference.cache
+D:\!C#\ConsoleTetris\Tetris\bin\Debug\Tetris.exe
+D:\!C#\ConsoleTetris\Tetris\bin\Debug\Tetris.pdb
+D:\!C#\ConsoleTetris\Tetris\obj\Debug\Tetris.exe
+D:\!C#\ConsoleTetris\Tetris\obj\Debug\Tetris.pdb

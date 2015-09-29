@@ -1,0 +1,5 @@
+D:\!C#\Advanced-CSharp-MultidimensionalArrays-Sets-Dictionaries-Homework\01. Fill the Matrix\bin\Debug\_01.Fill_the_Matrix.exe.config
+D:\!C#\Advanced-CSharp-MultidimensionalArrays-Sets-Dictionaries-Homework\01. Fill the Matrix\bin\Debug\_01.Fill_the_Matrix.exe
+D:\!C#\Advanced-CSharp-MultidimensionalArrays-Sets-Dictionaries-Homework\01. Fill the Matrix\bin\Debug\_01.Fill_the_Matrix.pdb
+D:\!C#\Advanced-CSharp-MultidimensionalArrays-Sets-Dictionaries-Homework\01. Fill the Matrix\obj\Debug\_01.Fill_the_Matrix.exe
+D:\!C#\Advanced-CSharp-MultidimensionalArrays-Sets-Dictionaries-Homework\01. Fill the Matrix\obj\Debug\_01.Fill_the_Matrix.pdb

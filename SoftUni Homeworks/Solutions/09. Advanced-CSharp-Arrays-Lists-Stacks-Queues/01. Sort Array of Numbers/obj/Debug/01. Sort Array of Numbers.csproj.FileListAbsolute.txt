@@ -1,0 +1,6 @@
+D:\!C#\Advanced-CSharp-Arrays-Lists-Stacks-Queues\01. Sort Array of Numbers\bin\Debug\_01.Sort_Array_of_Numbers.exe.config
+D:\!C#\Advanced-CSharp-Arrays-Lists-Stacks-Queues\01. Sort Array of Numbers\bin\Debug\_01.Sort_Array_of_Numbers.exe
+D:\!C#\Advanced-CSharp-Arrays-Lists-Stacks-Queues\01. Sort Array of Numbers\bin\Debug\_01.Sort_Array_of_Numbers.pdb
+D:\!C#\Advanced-CSharp-Arrays-Lists-Stacks-Queues\01. Sort Array of Numbers\obj\Debug\01. Sort Array of Numbers.csprojResolveAssemblyReference.cache
+D:\!C#\Advanced-CSharp-Arrays-Lists-Stacks-Queues\01. Sort Array of Numbers\obj\Debug\_01.Sort_Array_of_Numbers.exe
+D:\!C#\Advanced-CSharp-Arrays-Lists-Stacks-Queues\01. Sort Array of Numbers\obj\Debug\_01.Sort_Array_of_Numbers.pdb
