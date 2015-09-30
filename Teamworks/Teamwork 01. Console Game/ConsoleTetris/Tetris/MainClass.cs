@@ -19,6 +19,7 @@ namespace Tetris
         const int GameWidth = TetrisWidth + InfoPanelWidth + 3;
         const int GameHeight = TetrisHeight + 2;
         static bool[,] currentBrick;
+        static bool[,] nextBrick;
         static int currentBrickRow = 0;
         static int currentBrickCol = 4;
         static Random randomGenerator = new Random();
@@ -69,6 +70,7 @@ namespace Tetris
         #endregion
         public static void Main()
         {
+            //TODO add menu with options - new game, saved game?, high scores, exit
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.BackgroundColor = ConsoleColor.Black;
             Console.CursorVisible = false;
@@ -92,7 +94,13 @@ Press a Key to start................
 ");
             Console.ReadKey(true);
             Console.Clear();
-
+            Task.Run(() =>
+            {
+                while (true)
+                {
+                    PlayMusic();
+                }
+            });
             StartGame();
             PrintBorders();
 
@@ -105,7 +113,7 @@ Press a Key to start................
             {
                 if (Console.KeyAvailable)
                 {
-                    var key = Console.ReadKey();
+                    ConsoleKeyInfo key = Console.ReadKey();
                     while (Console.KeyAvailable) Console.ReadKey(true);
                     switch (key.Key)
                     {
@@ -122,7 +130,7 @@ Press a Key to start................
                             }
                             break;
                         case ConsoleKey.DownArrow:
-                            //TODO moving current brick faster down
+                            currentBrickRow++;
                             break;
                         case ConsoleKey.Spacebar:
                             //TODO rotate brick
@@ -131,7 +139,7 @@ Press a Key to start................
                     }
                 }
 
-                if (FigureStatus())
+                if (CheckForCollisions())
                 {
                     PrintCurrentFigure();
                     CheckForFullLines();
@@ -140,7 +148,13 @@ Press a Key to start................
                 {
                     currentBrickRow++;
                 }
-
+                //TODO update score
+                //TODO add levels
+                //TODO print next brick
+                //TODO print current level
+                //TODO print highest score
+                //TODO option to save score after game over
+                //TODO implement lives?
                 PrintScore();
 
                 PrintGameField();
@@ -149,6 +163,7 @@ Press a Key to start................
 
                 PrintFigure(currentBrick, currentBrickRow, currentBrickCol);
 
+               
                 Thread.Sleep(400);
             }
         }
@@ -219,9 +234,10 @@ Press a Key to start................
             }
         }
 
-        private static bool FigureStatus()
+        private static bool CheckForCollisions()
         {
-            var currentFigureLowestRow = currentBrickRow +currentBrick.GetLength(0);
+            //TODO fix bug when moving left and right you can pass thru stacked bricks
+            int currentFigureLowestRow = currentBrickRow +currentBrick.GetLength(0);
 
             if (currentFigureLowestRow > TetrisHeight)
             {
@@ -318,7 +334,10 @@ Press a Key to start................
             }
         }
 
-        
+        static void PlayMusic()
+        {
+            //TODO play mp3
+        }
     }
 
 
