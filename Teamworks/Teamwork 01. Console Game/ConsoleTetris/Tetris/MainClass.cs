@@ -80,8 +80,9 @@ namespace Tetris
             Console.BufferWidth = GameWidth;
             Console.WindowHeight = GameHeight + 1;
             Console.BufferHeight = GameHeight + 1;
+            PrintMenu();
             Console.Write(@"C# Console Tetris
-=======================================
+=======================
 
 Controls:
 
@@ -91,7 +92,7 @@ Controls:
 [↓]   Push block down 1 Unit
 
 
-Press a Key to start................
+Press a Key to start....
 ");
             Console.ReadKey(true);
             Console.Clear();
@@ -102,14 +103,14 @@ Press a Key to start................
                     PlayMusic();
                 }
             });
-            StartGame();
-            PrintBorders();
 
-            GameEngine();
+            PlayGame();
         }
 
-        private static void GameEngine()
+        private static void PlayGame()
         {
+            StartGame();
+            PrintBorders();
             while (true)
             {
                 if (Console.KeyAvailable)
@@ -223,8 +224,7 @@ Press a Key to start................
             {
                 Points += LevelPoints;
             }
-            currentBrickRow = 1;
-            currentBrickCol = 4;
+           
         }
 
         private static void PrintCurrentFigure()
@@ -374,6 +374,10 @@ Press a Key to start................
             }
 
             return result;
+        }
+        static void PrintMenu()
+        {
+            //todo
         }
     }
 
