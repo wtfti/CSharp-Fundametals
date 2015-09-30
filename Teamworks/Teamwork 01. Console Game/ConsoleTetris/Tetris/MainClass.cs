@@ -11,7 +11,7 @@ namespace Tetris
         static bool[,] GameBoard = new bool[TetrisHeight, TetrisWidth];
         private static int Points = 0;
         private const int LevelPoints = 10;
-        const char BorderCharacter = (char)219;
+        const char BorderCharacter = '|';
         const char BrickCharacter = 'o';
         const int TetrisWidth = 10;
         const int TetrisHeight = 16;
@@ -137,7 +137,6 @@ Press a Key to start................
                              }
                             break;
                         case ConsoleKey.Spacebar:
-                            //TODO rotate brick
                             currentBrick = RotateBrick(currentBrick); 
                             break;
 
@@ -296,8 +295,8 @@ Press a Key to start................
         {
             for (int col = 0; col < GameWidth; col++)
             {
-                Print(0, col, BorderCharacter);
-                Print(GameHeight - 1, col, BorderCharacter);
+                Print(0, col, '=');
+                Print(GameHeight - 1, col, '=');
             }
 
             for (int row = 0; row < GameHeight; row++)
