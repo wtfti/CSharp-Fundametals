@@ -7,23 +7,68 @@ namespace Tetris
 {
     internal class MainClass
     {
-        static bool[,] Game = new bool[TetrisHeight, TetrisWidth];
+        #region Global Variables
+        static bool[,] GameBoard = new bool[TetrisHeight, TetrisWidth];
         private static int Points = 0;
         private const int LevelPoints = 10;
         const char BorderCharacter = (char)219;
+        const char BrickCharacter = 'o';
         const int TetrisWidth = 10;
         const int TetrisHeight = 16;
         const int InfoPanelWidth = 10;
         const int GameWidth = TetrisWidth + InfoPanelWidth + 3;
         const int GameHeight = TetrisHeight + 2;
-        static bool[,] currentFigure;
-        static int currentFigureRow = 0;
-        static int currentFigureCol = 4;
-        static Random random = new Random();
+        static bool[,] currentBrick;
+        static int currentBrickRow = 0;
+        static int currentBrickCol = 4;
+        static Random randomGenerator = new Random();
+        private static bool[][,] Bricks = new bool[8][,]
+        {
+            new [,]
+            {
+                {true, true, true, true}
+            },
+            new bool[,]
+            {
+                {true},
+                {true},
+                {true},
+                {true}
+            },
+            new [,]
+            {
+                {true, true, true},
+                {false, false, true}
+            },
+            new [,]
+            {
+                {true, true, true},
+                {true, false, false}
+            },
+            new [,]
+            {
+                {true, true},
+                {true, true}
+            },
+            new [,]
+            {
+                {false, true, true},
+                {true, true, false}
+            },
+            new [,]
+            {
+                {true, true, true},
+                {false, true, false}
+            },
+            new [,]
+            {
+                {true, true, false},
+                {false, true, true}
+            },
+        };
+        #endregion
         public static void Main()
         {
-            //Console.OutputEncoding = Encoding.GetEncoding(1252);
-            Console.Beep(600, 500);
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.BackgroundColor = ConsoleColor.Black;
             Console.CursorVisible = false;
@@ -39,7 +84,7 @@ Controls:
 
 [→]   Move Block Right
 [←]   Move Block Left
-[↑]   Rotat Block
+[space]   Rotate Block
 [↓]   Push block down 1 Unit
 
 
@@ -61,22 +106,28 @@ Press a Key to start................
                 if (Console.KeyAvailable)
                 {
                     var key = Console.ReadKey();
+                    while (Console.KeyAvailable) Console.ReadKey(true);
                     switch (key.Key)
                     {
                         case ConsoleKey.LeftArrow:
-                            if (currentFigureCol > 1)
+                            if (currentBrickCol > 1)
                             {
-                                currentFigureCol--;
+                                currentBrickCol--;
                             }
                             break;
                         case ConsoleKey.RightArrow:
-                            if (currentFigureCol + currentFigure.GetLength(1) - 1 < TetrisWidth)
+                            if (currentBrickCol + currentBrick.GetLength(1) - 1 < TetrisWidth)
                             {
-                                currentFigureCol++;
+                                currentBrickCol++;
                             }
                             break;
                         case ConsoleKey.DownArrow:
+                            //TODO moving current brick faster down
                             break;
+                        case ConsoleKey.Spacebar:
+                            //TODO rotate brick
+                            break;
+
                     }
                 }
 
@@ -87,7 +138,7 @@ Press a Key to start................
                 }
                 else
                 {
-                    currentFigureRow++;
+                    currentBrickRow++;
                 }
 
                 PrintScore();
@@ -96,9 +147,9 @@ Press a Key to start................
 
                 PrintBorders();
 
-                PrintFigure(currentFigure, currentFigureRow, currentFigureCol);
+                PrintFigure(currentBrick, currentBrickRow, currentBrickCol);
 
-                Thread.Sleep(50);
+                Thread.Sleep(400);
             }
         }
 
@@ -106,19 +157,19 @@ Press a Key to start................
         {
             int linesRemoved = 0;
 
-            for (int row = 0; row < Game.GetLength(0); row++)
+            for (int row = 0; row < GameBoard.GetLength(0); row++)
             {
-                bool isFullLine = true;
-                for (int col = 0; col < Game.GetLength(1); col++)
+                bool isLineFull = true;
+                for (int col = 0; col < GameBoard.GetLength(1); col++)
                 {
-                    if (Game[row, col] == false)
+                    if (GameBoard[row, col] == false)
                     {
-                        isFullLine = false;
+                        isLineFull = false;
                         break;
                     }
                 }
 
-                if (isFullLine)
+                if (isLineFull)
                 {
                     for (int nextLine = row - 1; nextLine >= 0; nextLine--)
                     {
@@ -127,16 +178,16 @@ Press a Key to start................
                             continue;
                         }
 
-                        for (int colFromNextLine = 0; colFromNextLine < Game.GetLength(1); colFromNextLine++)
+                        for (int colFromNextLine = 0; colFromNextLine < GameBoard.GetLength(1); colFromNextLine++)
                         {
-                            Game[nextLine + 1, colFromNextLine] =
-                                Game[nextLine, colFromNextLine];
+                            GameBoard[nextLine + 1, colFromNextLine] =
+                                GameBoard[nextLine, colFromNextLine];
                         }
                     }
 
-                    for (int colLastLine = 0; colLastLine < Game.GetLength(1); colLastLine++)
+                    for (int colLastLine = 0; colLastLine < GameBoard.GetLength(1); colLastLine++)
                     {
-                        Game[0, colLastLine] = false;
+                        GameBoard[0, colLastLine] = false;
                     }
 
                     linesRemoved++;
@@ -147,22 +198,22 @@ Press a Key to start................
             {
                 Points += LevelPoints;
             }
-            currentFigureRow = 1;
-            currentFigureCol = 4;
+            currentBrickRow = 1;
+            currentBrickCol = 4;
         }
 
         private static void PrintCurrentFigure()
         {
-            for (int figRow = 0; figRow < currentFigure.GetLength(0); figRow++)
+            for (int brickRow = 0; brickRow < currentBrick.GetLength(0); brickRow++)
             {
-                for (int figCol = 0; figCol < currentFigure.GetLength(1); figCol++)
+                for (int brickCol = 0; brickCol < currentBrick.GetLength(1); brickCol++)
                 {
-                    var row = currentFigureRow - 1 + figRow;
-                    var col = currentFigureCol - 1 + figCol;
+                    int row = currentBrickRow - 1 + brickRow;
+                    int col = currentBrickCol - 1 + brickCol;
 
-                    if (currentFigure[figRow, figCol])
+                    if (currentBrick[brickRow, brickCol])
                     {
-                        Game[row, col] = true;
+                        GameBoard[row, col] = true;
                     }
                 }
             }
@@ -170,26 +221,26 @@ Press a Key to start................
 
         private static bool FigureStatus()
         {
-            var currentFigureLowestRow = currentFigureRow +currentFigure.GetLength(0);
+            var currentFigureLowestRow = currentBrickRow +currentBrick.GetLength(0);
 
             if (currentFigureLowestRow > TetrisHeight)
             {
                 return true;
             }
 
-            for (int figRow = 0; figRow < currentFigure.GetLength(0); figRow++)
+            for (int figRow = 0; figRow < currentBrick.GetLength(0); figRow++)
             {
-                for (int figCol = 0; figCol < currentFigure.GetLength(1); figCol++)
+                for (int figCol = 0; figCol < currentBrick.GetLength(1); figCol++)
                 {
-                    var row = currentFigureRow + figRow;
-                    var col = currentFigureCol - 1 + figCol;
+                    var row = currentBrickRow + figRow;
+                    var col = currentBrickCol - 1 + figCol;
 
                     if (row < 0)
                     {
                         continue;
                     }
 
-                    if (Game[row, col] && currentFigure[figRow, figCol])
+                    if (GameBoard[row, col] && currentBrick[figRow, figCol])
                     {
                         return true;
                     }
@@ -201,7 +252,7 @@ Press a Key to start................
 
         private static void StartGame()
         {
-            currentFigure = Figures[random.Next(0, Figures.Length)];
+            currentBrick = Bricks[randomGenerator.Next(0, Bricks.Length)];
         }
 
         static void PrintScore()
@@ -228,8 +279,9 @@ Press a Key to start................
             }
         }
 
-        private static void Print(int row, int col, object ch)
+        private static void Print(int row, int col, object ch, ConsoleColor color = ConsoleColor.White)
         {
+            Console.ForegroundColor = color;
             Console.SetCursorPosition(col, row);
             Console.Write(ch);
         }
@@ -240,9 +292,9 @@ Press a Key to start................
             {
                 for (int col = 1; col <= TetrisWidth; col++)
                 {
-                    if (Game[row - 1, col - 1])
+                    if (GameBoard[row - 1, col - 1])
                     {
-                        Print(row, col, '=');
+                        Print(row, col, BrickCharacter);
                     }
                     else
                     {
@@ -260,56 +312,13 @@ Press a Key to start................
                 {
                     if (figure[x, y])
                     {
-                        Print(row + x, col + y, '=');
+                        Print(row + x, col + y, BrickCharacter);
                     }
                 }
             }
         }
 
-        private static bool[][,] Figures = new bool[8][,]
-        {
-            new [,] // ----
-            {
-                {true, true, true, true}
-            },
-            new bool[,] // I
-            {
-                {true},
-                {true},
-                {true},
-                {true}
-            },
-            new [,] // J
-            {
-                {true, true, true},
-                {false, false, true}
-            },
-            new [,] // L
-            {
-                {true, true, true},
-                {true, false, false}
-            },
-            new [,] // O
-            {
-                {true, true},
-                {true, true}
-            },
-            new [,] // S
-            {
-                {false, true, true},
-                {true, true, false}
-            },
-            new [,] // T
-            {
-                {true, true, true},
-                {false, true, false}
-            },
-            new [,] // Z
-            {
-                {true, true, false},
-                {false, true, true}
-            },
-        };
+        
     }
 
 
