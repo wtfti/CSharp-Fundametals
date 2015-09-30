@@ -71,6 +71,7 @@ namespace Tetris
         public static void Main()
         {
             //TODO add menu with options - new game, saved game?, high scores, exit
+            //TODO color bricks different colors
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.BackgroundColor = ConsoleColor.Black;
             Console.CursorVisible = false;
@@ -130,19 +131,27 @@ Press a Key to start................
                             }
                             break;
                         case ConsoleKey.DownArrow:
-                            currentBrickRow++;
+                            if (currentBrickRow+currentBrick.GetLength(0)-1 < TetrisHeight)
+                            { 
+                                currentBrickRow++;
+                             }
                             break;
                         case ConsoleKey.Spacebar:
                             //TODO rotate brick
+                            currentBrick = RotateBrick(currentBrick); 
                             break;
 
                     }
                 }
-
+                
                 if (CheckForCollisions())
                 {
                     PrintCurrentFigure();
                     CheckForFullLines();
+                    currentBrick = nextBrick;
+                    nextBrick = Bricks[randomGenerator.Next(0, Bricks.Length)];
+                    currentBrickRow = 1;
+                    currentBrickCol = 4;
                 }
                 else
                 {
@@ -155,6 +164,7 @@ Press a Key to start................
                 //TODO print highest score
                 //TODO option to save score after game over
                 //TODO implement lives?
+                //TODO generate new brick
                 PrintScore();
 
                 PrintGameField();
@@ -162,8 +172,9 @@ Press a Key to start................
                 PrintBorders();
 
                 PrintFigure(currentBrick, currentBrickRow, currentBrickCol);
+                
 
-               
+
                 Thread.Sleep(400);
             }
         }
@@ -237,6 +248,7 @@ Press a Key to start................
         private static bool CheckForCollisions()
         {
             //TODO fix bug when moving left and right you can pass thru stacked bricks
+            //TODO check for reaching top of the gameboard
             int currentFigureLowestRow = currentBrickRow +currentBrick.GetLength(0);
 
             if (currentFigureLowestRow > TetrisHeight)
@@ -269,6 +281,7 @@ Press a Key to start................
         private static void StartGame()
         {
             currentBrick = Bricks[randomGenerator.Next(0, Bricks.Length)];
+            nextBrick = Bricks[randomGenerator.Next(0, Bricks.Length)];
         }
 
         static void PrintScore()
@@ -338,7 +351,33 @@ Press a Key to start................
         {
             //TODO play mp3
         }
+
+        //TODO: add option to rotate left or right?
+        public static bool[,] RotateBrick(bool[,] input)
+        {
+            bool[,] result = new bool[input.GetLength(1), input.GetLength(0)];
+            for (int i = 0; i < input.GetLength(0); i++)
+            {
+                for (int j = 0; j < input.GetLength(1); j++)
+                {
+                    result[j, i] = input[i, j];
+                }
+            }
+
+            for (int i = 0; i < result.GetLength(0); i++)
+            {
+                for (int j = 0; j < result.GetLength(1) / 2; j++)
+                {
+                    var tempLeft = result[i, j];
+                    result[i, j] = result[i, result.GetLength(1) - 1 - j];
+                    result[i, result.GetLength(1) - 1 - j] = tempLeft;
+                }
+            }
+
+            return result;
+        }
     }
 
+    
 
 }
