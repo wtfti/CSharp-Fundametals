@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Media;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -96,14 +97,7 @@ Press a Key to start....
 ");
             Console.ReadKey(true);
             Console.Clear();
-            Task.Run(() =>
-            {
-                while (true)
-                {
-                    PlayMusic();
-                }
-            });
-
+            Task.Run(() => PlayMusic());
             PlayGame();
         }
 
@@ -348,7 +342,9 @@ Press a Key to start....
 
         static void PlayMusic()
         {
-            //TODO play mp3
+            SoundPlayer player = new SoundPlayer();
+            player.SoundLocation = "../../tetris-tone.wav";
+            player.PlayLooping();
         }
 
         //TODO: add option to rotate left or right?
@@ -377,7 +373,7 @@ Press a Key to start....
         }
         static void PrintMenu()
         {
-            //todo
+           //todo
         }
     }
 
