@@ -23,8 +23,10 @@ namespace Tetris
         static bool[,] nextBrick;
         static int currentBrickRow = 0;
         static int currentBrickCol = 4;
+        static ConsoleColor currentBrickColor = ConsoleColor.White;
         static Random randomGenerator = new Random();
         static ConsoleColor[] brickColors = new ConsoleColor[] {ConsoleColor.Cyan,ConsoleColor.Green,ConsoleColor.Magenta,ConsoleColor.Gray,ConsoleColor.White,ConsoleColor.Yellow,ConsoleColor.Red };
+        #region BrickArray
         private static bool[][,] Bricks = new bool[7][,]
         {
             new [,]
@@ -63,6 +65,7 @@ namespace Tetris
             },
         };
         #endregion
+        #endregion
         public static void Main()
         {
             //TODO add menu with options - new game, saved game?, high scores, exit
@@ -76,7 +79,6 @@ namespace Tetris
             Console.WindowHeight = GameHeight + 1;
             Console.BufferHeight = GameHeight + 1;
             PrintMenu();
-
         }
 
         private static void PlayGame()
@@ -112,7 +114,7 @@ namespace Tetris
                              }
                             break;
                         case ConsoleKey.Spacebar:
-                            currentBrick = RotateBrick(currentBrick); 
+                            currentBrick = RotateBrick(currentBrick, currentBrickColor); 
                             break;
 
                     }
@@ -313,21 +315,32 @@ namespace Tetris
                 {
                     if (figure[x, y])
                     {
-                        Print(row + x, col + y, BrickCharacter);
+                        SetCurrentBrickColor(figure);
+                        Print(row + x, col + y, BrickCharacter, currentBrickColor);
                     }
                 }
             }
         }
-
+        static void SetCurrentBrickColor(bool[,] currentBrick)
+        {
+            for (int i = 0; i < Bricks.GetLength(0); i++)
+            {
+                if(currentBrick == Bricks[i])
+                {
+                    currentBrickColor = brickColors[i];
+                    break;
+                }
+            }
+        }
         static void PlayMusic()
         {
             SoundPlayer player = new SoundPlayer();
             player.SoundLocation = "../../tetris-tone.wav";
-            player.PlayLooping();
+          //player.PlayLooping();
         }
 
         //TODO: add option to rotate left or right?
-        public static bool[,] RotateBrick(bool[,] input)
+        public static bool[,] RotateBrick(bool[,] input, ConsoleColor color)
         {
             bool[,] result = new bool[input.GetLength(1), input.GetLength(0)];
             for (int i = 0; i < input.GetLength(0); i++)
