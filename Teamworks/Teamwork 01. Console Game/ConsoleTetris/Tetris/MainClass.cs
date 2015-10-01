@@ -24,18 +24,12 @@ namespace Tetris
         static int currentBrickRow = 0;
         static int currentBrickCol = 4;
         static Random randomGenerator = new Random();
-        private static bool[][,] Bricks = new bool[8][,]
+        static ConsoleColor[] brickColors = new ConsoleColor[] {ConsoleColor.Cyan,ConsoleColor.Green,ConsoleColor.Magenta,ConsoleColor.Gray,ConsoleColor.White,ConsoleColor.Yellow,ConsoleColor.Red };
+        private static bool[][,] Bricks = new bool[7][,]
         {
             new [,]
             {
                 {true, true, true, true}
-            },
-            new bool[,]
-            {
-                {true},
-                {true},
-                {true},
-                {true}
             },
             new [,]
             {
@@ -82,27 +76,13 @@ namespace Tetris
             Console.WindowHeight = GameHeight + 1;
             Console.BufferHeight = GameHeight + 1;
             PrintMenu();
-            Console.Write(@"C# Console Tetris
-=======================
 
-Controls:
-
-[→]   Move Block Right
-[←]   Move Block Left
-[space]   Rotate Block
-[↓]   Push block down 1 Unit
-
-
-Press a Key to start....
-");
-            Console.ReadKey(true);
-            Console.Clear();
-            Task.Run(() => PlayMusic());
-            PlayGame();
         }
 
         private static void PlayGame()
         {
+            Console.Clear();
+            Task.Run(() => PlayMusic());
             StartGame();
             PrintBorders();
             while (true)
@@ -158,7 +138,6 @@ Press a Key to start....
                 //TODO print highest score
                 //TODO option to save score after game over
                 //TODO implement lives?
-                //TODO generate new brick
                 PrintScore();
 
                 PrintGameField();
@@ -373,7 +352,41 @@ Press a Key to start....
         }
         static void PrintMenu()
         {
-           //todo
+            Print(3, 9, "MENU", ConsoleColor.White);
+            Print(4, 4, "[1] New Game", ConsoleColor.White);
+            Print(5, 4, "[2] High scores",ConsoleColor.White);
+            Print(6, 4, "[3] Controls",ConsoleColor.White);
+            Print(7, 4, "[4] Exit",ConsoleColor.White);
+            Print(8, 4, "Choose number: ", ConsoleColor.White);
+            int option = int.Parse(Console.ReadLine());
+            switch (option)
+            {
+                case 1: PlayGame(); break;
+                case 2: /*ShowHighScores();*/; break;
+                case 3: PrintControlsInfo(); break;
+                case 4: Environment.Exit(0); break;
+                default: Environment.Exit(0);break;
+            }
+        }
+        static void PrintControlsInfo()
+        {
+            Console.Clear();
+            Console.Write(@"C# Console Tetris
+=======================
+
+Controls:
+
+[→] Move Block Right
+[←] Move Block Left
+[space] Rotate Block
+[↓] Push block down
+
+Press anykey to
+go back
+");
+            Console.ReadKey(true);
+            Console.Clear();
+            Main();
         }
     }
 
