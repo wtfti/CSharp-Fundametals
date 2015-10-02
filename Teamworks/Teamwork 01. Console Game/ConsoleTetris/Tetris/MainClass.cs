@@ -3,7 +3,9 @@ using System.Media;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-
+using System.IO;
+using System.Collections.Generic;
+using System.Linq;
 namespace Tetris
 {
     internal class MainClass
@@ -74,9 +76,9 @@ namespace Tetris
             Console.BackgroundColor = ConsoleColor.Black;
             Console.CursorVisible = false;
             Console.Title = "Tetris";
-            Console.WindowWidth = GameWidth;
-            Console.BufferWidth = GameWidth;
-            Console.WindowHeight = GameHeight + 1;
+            Console.WindowWidth = GameWidth+20;
+            Console.BufferWidth = GameWidth+20;
+            Console.WindowHeight = GameHeight ;
             Console.BufferHeight = GameHeight + 1;
             PrintMenu();
         }
@@ -363,6 +365,55 @@ namespace Tetris
 
             return result;
         }
+
+        static void ShowHighScores()
+        {
+            List<Players> players = new List<Players>();
+            StreamReader reader = new StreamReader("scores.txt");
+            string line;
+            bool isFirstLine = true;
+               while((line=reader.ReadLine())!=null)
+                 {
+                if (!isFirstLine)
+                {
+                    try
+                    {
+                        string[] data = line.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
+                        string name = data[0];
+                        long score = long.Parse(data[1]);
+                        string time = data[2];
+
+                        players.Add(new Players(name, score, time));
+                    }
+                    catch (Exception e) { }
+                }
+                isFirstLine = false;
+            }
+            reader.Close();
+            var result = players.OrderByDescending(player=> player.Score)
+                .Take(5)
+                .Select(player => player.Name + " scored: "+player.Score+" in "+player.Time);
+          
+            Console.WriteLine("Top 5 scores:");
+            Console.WriteLine(string.Join("\n",result));
+            Console.WriteLine("Press any key to continue...");
+            string key = Console.ReadLine();
+            if (key != null)
+            {
+                Console.Clear();
+                PrintMenu();
+            }
+            
+        }
+
+        static void RecordPlayerScore(string playerName, long score, string time)
+        {           
+            using (StreamWriter w = File.AppendText("scores.txt"))
+            {
+                w.WriteLine(playerName+" "+score+" "+time+"\n");
+            }
+        }
+
         static void PrintMenu()
         {
             Print(3, 9, "MENU", ConsoleColor.White);
@@ -375,7 +426,7 @@ namespace Tetris
             switch (option)
             {
                 case 1: PlayGame(); break;
-                case 2: /*ShowHighScores();*/; break;
+                case 2: ShowHighScores(); break;
                 case 3: PrintControlsInfo(); break;
                 case 4: Environment.Exit(0); break;
                 default: Environment.Exit(0);break;

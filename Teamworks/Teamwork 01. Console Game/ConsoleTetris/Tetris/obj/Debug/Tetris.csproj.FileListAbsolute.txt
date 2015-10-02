@@ -16,3 +16,12 @@ C:\Users\Valio\Desktop\CSharp-Fundametals\Teamworks\Teamwork 01. Console Game\Co
 C:\Users\Valio\Desktop\CSharp-Fundametals\Teamworks\Teamwork 01. Console Game\ConsoleTetris\Tetris\bin\Debug\Tetris.exe
 C:\Users\Valio\Desktop\CSharp-Fundametals\Teamworks\Teamwork 01. Console Game\ConsoleTetris\Tetris\bin\Debug\Tetris.pdb
 C:\Users\Valio\Desktop\CSharp-Fundametals\Teamworks\Teamwork 01. Console Game\ConsoleTetris\Tetris\obj\Debug\Tetris.csprojResolveAssemblyReference.cache
+C:\Users\Orhan\Documents\GitHub\CSharp-Fundametals\Teamworks\Teamwork 01. Console Game\ConsoleTetris\Tetris\bin\Debug\Tetris.exe.config
+C:\Users\Orhan\Documents\GitHub\CSharp-Fundametals\Teamworks\Teamwork 01. Console Game\ConsoleTetris\Tetris\obj\Debug\Tetris.exe
+C:\Users\Orhan\Documents\GitHub\CSharp-Fundametals\Teamworks\Teamwork 01. Console Game\ConsoleTetris\Tetris\obj\Debug\Tetris.pdb
+C:\Users\Orhan\Documents\GitHub\CSharp-Fundametals\Teamworks\Teamwork 01. Console Game\ConsoleTetris\Tetris\bin\Debug\Tetris.exe
+C:\Users\Orhan\Documents\GitHub\CSharp-Fundametals\Teamworks\Teamwork 01. Console Game\ConsoleTetris\Tetris\bin\Debug\Tetris.pdb
+C:\Users\Orhan\Documents\GitHub\CSharp-Fundametals\Teamworks\Teamwork 01. Console Game\ConsoleTetris\Tetris\obj\Debug\Tetris.csprojResolveAssemblyReference.cache
+C:\Users\Orhan\Documents\CSharp-Fundametals\Teamworks\Teamwork 01. Console Game\ConsoleTetris\Tetris\bin\Debug\Tetris.exe.config
+C:\Users\Orhan\Documents\CSharp-Fundametals\Teamworks\Teamwork 01. Console Game\ConsoleTetris\Tetris\obj\Debug\Tetris.exe
+C:\Users\Orhan\Documents\CSharp-Fundametals\Teamworks\Teamwork 01. Console Game\ConsoleTetris\Tetris\obj\Debug\Tetris.pdb

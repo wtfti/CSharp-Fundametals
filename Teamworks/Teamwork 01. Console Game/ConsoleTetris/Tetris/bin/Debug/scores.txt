@@ -1,0 +1,14 @@
+Playername |  Score | Time format mins:secs
+masterOfTetris 2500 01:25
+player2 300 02:30
+TetrisManiac 10000 09:11
+pro 5000 04:15
+first 1500 02:34
+
+
+orhan 3400 03:12
+
+orhan 3400 03:12
+
+orhan 3400 03:12
+
