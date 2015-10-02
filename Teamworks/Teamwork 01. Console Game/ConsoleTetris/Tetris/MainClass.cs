@@ -410,7 +410,7 @@ namespace Tetris
         {           
             using (StreamWriter w = File.AppendText("scores.txt"))
             {
-                w.WriteLine(playerName+" "+score+" "+time+"\n");
+                w.WriteLine("\n"+playerName +" "+score+" "+time);
             }
         }
 
