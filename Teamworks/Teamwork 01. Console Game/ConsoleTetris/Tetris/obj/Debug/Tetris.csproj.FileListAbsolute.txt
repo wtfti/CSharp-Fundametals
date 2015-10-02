@@ -25,3 +25,6 @@ C:\Users\Orhan\Documents\GitHub\CSharp-Fundametals\Teamworks\Teamwork 01. Consol
 C:\Users\Orhan\Documents\CSharp-Fundametals\Teamworks\Teamwork 01. Console Game\ConsoleTetris\Tetris\bin\Debug\Tetris.exe.config
 C:\Users\Orhan\Documents\CSharp-Fundametals\Teamworks\Teamwork 01. Console Game\ConsoleTetris\Tetris\obj\Debug\Tetris.exe
 C:\Users\Orhan\Documents\CSharp-Fundametals\Teamworks\Teamwork 01. Console Game\ConsoleTetris\Tetris\obj\Debug\Tetris.pdb
+C:\Users\Orhan\Documents\CSharp-Fundametals\Teamworks\Teamwork 01. Console Game\ConsoleTetris\Tetris\bin\Debug\Tetris.exe
+C:\Users\Orhan\Documents\CSharp-Fundametals\Teamworks\Teamwork 01. Console Game\ConsoleTetris\Tetris\bin\Debug\Tetris.pdb
+C:\Users\Orhan\Documents\CSharp-Fundametals\Teamworks\Teamwork 01. Console Game\ConsoleTetris\Tetris\obj\Debug\Tetris.csprojResolveAssemblyReference.cache

@@ -1,3 +1,0 @@
-orhan 200 2
-nasko 20000 3
-ulian 500 23
