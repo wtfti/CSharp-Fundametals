@@ -368,7 +368,7 @@ namespace Tetris
 
         static void ShowHighScores()
         {
-            List<Players> players = new List<Players>();
+            List<Tuple<string,long,string>> players = new List<Tuple<string, long, string>>();
             StreamReader reader = new StreamReader("scores.txt");
             string line;
             bool isFirstLine = true;
@@ -383,16 +383,16 @@ namespace Tetris
                         long score = long.Parse(data[1]);
                         string time = data[2];
 
-                        players.Add(new Players(name, score, time));
+                        players.Add(new Tuple<string, long, string>(name, score, time));
                     }
                     catch (Exception e) { }
                 }
                 isFirstLine = false;
             }
             reader.Close();
-            var result = players.OrderByDescending(player=> player.Score)
+            var result = players.OrderByDescending(player=> player.Item2)
                 .Take(5)
-                .Select(player => player.Name + " scored: "+player.Score+" in "+player.Time);
+                .Select(player => player.Item1 + " scored: "+player.Item2 + " in "+player.Item3);
           
             Console.WriteLine("Top 5 scores:");
             Console.WriteLine(string.Join("\n",result));
