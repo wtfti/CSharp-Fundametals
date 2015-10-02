@@ -1,0 +1,5 @@
+D:\!C#\Primitive data type and variables - Homework\11. Bank Account Data\bin\Debug\_11.Bank_Account_Data.exe.config
+D:\!C#\Primitive data type and variables - Homework\11. Bank Account Data\bin\Debug\_11.Bank_Account_Data.exe
+D:\!C#\Primitive data type and variables - Homework\11. Bank Account Data\bin\Debug\_11.Bank_Account_Data.pdb
+D:\!C#\Primitive data type and variables - Homework\11. Bank Account Data\obj\Debug\_11.Bank_Account_Data.exe
+D:\!C#\Primitive data type and variables - Homework\11. Bank Account Data\obj\Debug\_11.Bank_Account_Data.pdb

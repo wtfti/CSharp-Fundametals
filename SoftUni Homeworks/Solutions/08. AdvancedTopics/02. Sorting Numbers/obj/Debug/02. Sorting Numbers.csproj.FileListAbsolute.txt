@@ -1,0 +1,5 @@
+D:\!C#\CSharp-Advanced-Topics-Homework\02. Sorting Numbers\bin\Debug\_02.Sorting_Numbers.exe.config
+D:\!C#\CSharp-Advanced-Topics-Homework\02. Sorting Numbers\bin\Debug\_02.Sorting_Numbers.exe
+D:\!C#\CSharp-Advanced-Topics-Homework\02. Sorting Numbers\bin\Debug\_02.Sorting_Numbers.pdb
+D:\!C#\CSharp-Advanced-Topics-Homework\02. Sorting Numbers\obj\Debug\_02.Sorting_Numbers.exe
+D:\!C#\CSharp-Advanced-Topics-Homework\02. Sorting Numbers\obj\Debug\_02.Sorting_Numbers.pdb

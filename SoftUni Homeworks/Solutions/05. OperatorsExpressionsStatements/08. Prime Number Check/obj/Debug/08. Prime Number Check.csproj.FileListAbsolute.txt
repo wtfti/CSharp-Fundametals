@@ -1,0 +1,5 @@
+D:\!C#\HomeworkOperatorsExpressionsStatements\08. Prime Number Check\bin\Debug\_08.Prime_Number_Check.exe.config
+D:\!C#\HomeworkOperatorsExpressionsStatements\08. Prime Number Check\bin\Debug\_08.Prime_Number_Check.exe
+D:\!C#\HomeworkOperatorsExpressionsStatements\08. Prime Number Check\bin\Debug\_08.Prime_Number_Check.pdb
+D:\!C#\HomeworkOperatorsExpressionsStatements\08. Prime Number Check\obj\Debug\_08.Prime_Number_Check.exe
+D:\!C#\HomeworkOperatorsExpressionsStatements\08. Prime Number Check\obj\Debug\_08.Prime_Number_Check.pdb

@@ -1,0 +1,5 @@
+D:\!C#\Primitive data type and variables - Homework\02. Float or Double\bin\Debug\_02.Float_or_Double.exe.config
+D:\!C#\Primitive data type and variables - Homework\02. Float or Double\bin\Debug\_02.Float_or_Double.exe
+D:\!C#\Primitive data type and variables - Homework\02. Float or Double\bin\Debug\_02.Float_or_Double.pdb
+D:\!C#\Primitive data type and variables - Homework\02. Float or Double\obj\Debug\_02.Float_or_Double.exe
+D:\!C#\Primitive data type and variables - Homework\02. Float or Double\obj\Debug\_02.Float_or_Double.pdb

@@ -1,0 +1,13 @@
+Most popular programming languages are:
+1. Java
+2. JavaScript
+3. C#
+4. PHP
+5. C++
+6. Python
+7. C
+8. SQL
+9. Ruby
+10. Objectivice -C
+
+C# and Java are actually quite similar, from an application developer's perspective. Both C# and Java are Type-Safe Languages. Both C# and Java Are "Pure" Object-Oriented Languages. More info: https://msdn.microsoft.com/en-us/library/ms836794.aspx

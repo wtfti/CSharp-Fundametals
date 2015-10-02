@@ -1,0 +1,5 @@
+D:\!C#\HomeworkConditionalStatements\08. Digit as Word\bin\Debug\_08.Digit_as_Word.exe.config
+D:\!C#\HomeworkConditionalStatements\08. Digit as Word\bin\Debug\_08.Digit_as_Word.exe
+D:\!C#\HomeworkConditionalStatements\08. Digit as Word\bin\Debug\_08.Digit_as_Word.pdb
+D:\!C#\HomeworkConditionalStatements\08. Digit as Word\obj\Debug\_08.Digit_as_Word.exe
+D:\!C#\HomeworkConditionalStatements\08. Digit as Word\obj\Debug\_08.Digit_as_Word.pdb

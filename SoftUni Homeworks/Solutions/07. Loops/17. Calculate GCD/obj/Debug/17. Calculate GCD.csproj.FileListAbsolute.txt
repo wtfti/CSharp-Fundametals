@@ -1,0 +1,5 @@
+D:\!C#\Loops-Homework\17. Calculate GCD\bin\Debug\_17.Calculate_GCD.exe.config
+D:\!C#\Loops-Homework\17. Calculate GCD\bin\Debug\_17.Calculate_GCD.exe
+D:\!C#\Loops-Homework\17. Calculate GCD\bin\Debug\_17.Calculate_GCD.pdb
+D:\!C#\Loops-Homework\17. Calculate GCD\obj\Debug\_17.Calculate_GCD.exe
+D:\!C#\Loops-Homework\17. Calculate GCD\obj\Debug\_17.Calculate_GCD.pdb

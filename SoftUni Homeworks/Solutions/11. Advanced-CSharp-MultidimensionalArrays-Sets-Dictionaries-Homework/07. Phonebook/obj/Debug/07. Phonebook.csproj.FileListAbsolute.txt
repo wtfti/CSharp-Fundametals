@@ -1,0 +1,6 @@
+D:\!C#\Advanced-CSharp-MultidimensionalArrays-Sets-Dictionaries-Homework\07. Phonebook\bin\Debug\_07.Phonebook.exe.config
+D:\!C#\Advanced-CSharp-MultidimensionalArrays-Sets-Dictionaries-Homework\07. Phonebook\bin\Debug\_07.Phonebook.exe
+D:\!C#\Advanced-CSharp-MultidimensionalArrays-Sets-Dictionaries-Homework\07. Phonebook\bin\Debug\_07.Phonebook.pdb
+D:\!C#\Advanced-CSharp-MultidimensionalArrays-Sets-Dictionaries-Homework\07. Phonebook\obj\Debug\_07.Phonebook.exe
+D:\!C#\Advanced-CSharp-MultidimensionalArrays-Sets-Dictionaries-Homework\07. Phonebook\obj\Debug\_07.Phonebook.pdb
+D:\!C#\Advanced-CSharp-MultidimensionalArrays-Sets-Dictionaries-Homework\07. Phonebook\obj\Debug\07. Phonebook.csprojResolveAssemblyReference.cache

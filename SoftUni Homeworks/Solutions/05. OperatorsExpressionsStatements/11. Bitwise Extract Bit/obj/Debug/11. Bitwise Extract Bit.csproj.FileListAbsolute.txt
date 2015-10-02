@@ -1,0 +1,5 @@
+D:\!C#\HomeworkOperatorsExpressionsStatements\11. Bitwise Extract Bit\bin\Debug\_11.Bitwise_Extract_Bit.exe.config
+D:\!C#\HomeworkOperatorsExpressionsStatements\11. Bitwise Extract Bit\bin\Debug\_11.Bitwise_Extract_Bit.exe
+D:\!C#\HomeworkOperatorsExpressionsStatements\11. Bitwise Extract Bit\bin\Debug\_11.Bitwise_Extract_Bit.pdb
+D:\!C#\HomeworkOperatorsExpressionsStatements\11. Bitwise Extract Bit\obj\Debug\_11.Bitwise_Extract_Bit.exe
+D:\!C#\HomeworkOperatorsExpressionsStatements\11. Bitwise Extract Bit\obj\Debug\_11.Bitwise_Extract_Bit.pdb

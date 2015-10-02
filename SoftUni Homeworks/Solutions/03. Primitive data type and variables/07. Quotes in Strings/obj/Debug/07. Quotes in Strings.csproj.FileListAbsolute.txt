@@ -1,0 +1,5 @@
+D:\!C#\Primitive data type and variables - Homework\07. Quotes in Strings\bin\Debug\_07.Quotes_in_Strings.exe.config
+D:\!C#\Primitive data type and variables - Homework\07. Quotes in Strings\bin\Debug\_07.Quotes_in_Strings.exe
+D:\!C#\Primitive data type and variables - Homework\07. Quotes in Strings\bin\Debug\_07.Quotes_in_Strings.pdb
+D:\!C#\Primitive data type and variables - Homework\07. Quotes in Strings\obj\Debug\_07.Quotes_in_Strings.exe
+D:\!C#\Primitive data type and variables - Homework\07. Quotes in Strings\obj\Debug\_07.Quotes_in_Strings.pdb

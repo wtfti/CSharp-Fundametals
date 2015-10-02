@@ -1,0 +1,5 @@
+D:\!C#\Advanced-CSharp-Methods-Homework\05. Reverse Number\bin\Debug\_05.Reverse_Number.exe.config
+D:\!C#\Advanced-CSharp-Methods-Homework\05. Reverse Number\bin\Debug\_05.Reverse_Number.exe
+D:\!C#\Advanced-CSharp-Methods-Homework\05. Reverse Number\bin\Debug\_05.Reverse_Number.pdb
+D:\!C#\Advanced-CSharp-Methods-Homework\05. Reverse Number\obj\Debug\_05.Reverse_Number.exe
+D:\!C#\Advanced-CSharp-Methods-Homework\05. Reverse Number\obj\Debug\_05.Reverse_Number.pdb

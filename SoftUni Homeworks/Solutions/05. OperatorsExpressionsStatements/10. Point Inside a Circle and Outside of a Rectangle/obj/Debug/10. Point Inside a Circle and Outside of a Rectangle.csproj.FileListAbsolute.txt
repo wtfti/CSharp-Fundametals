@@ -1,0 +1,6 @@
+D:\!C#\HomeworkOperatorsExpressionsStatements\10. Point Inside a Circle and Outside of a Rectangle\bin\Debug\_10.Point_Inside_a_Circle_and_Outside_of_a_Rectangle.exe.config
+D:\!C#\HomeworkOperatorsExpressionsStatements\10. Point Inside a Circle and Outside of a Rectangle\bin\Debug\_10.Point_Inside_a_Circle_and_Outside_of_a_Rectangle.exe
+D:\!C#\HomeworkOperatorsExpressionsStatements\10. Point Inside a Circle and Outside of a Rectangle\bin\Debug\_10.Point_Inside_a_Circle_and_Outside_of_a_Rectangle.pdb
+D:\!C#\HomeworkOperatorsExpressionsStatements\10. Point Inside a Circle and Outside of a Rectangle\obj\Debug\_10.Point_Inside_a_Circle_and_Outside_of_a_Rectangle.exe
+D:\!C#\HomeworkOperatorsExpressionsStatements\10. Point Inside a Circle and Outside of a Rectangle\obj\Debug\_10.Point_Inside_a_Circle_and_Outside_of_a_Rectangle.pdb
+D:\!C#\HomeworkOperatorsExpressionsStatements\10. Point Inside a Circle and Outside of a Rectangle\obj\Debug\10. Point Inside a Circle and Outside of a Rectangle.csprojResolveAssemblyReference.cache

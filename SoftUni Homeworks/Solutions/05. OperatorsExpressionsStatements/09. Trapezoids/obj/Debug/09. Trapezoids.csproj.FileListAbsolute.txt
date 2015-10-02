@@ -1,0 +1,5 @@
+D:\!C#\HomeworkOperatorsExpressionsStatements\09. Trapezoids\bin\Debug\_09.Trapezoids.exe.config
+D:\!C#\HomeworkOperatorsExpressionsStatements\09. Trapezoids\bin\Debug\_09.Trapezoids.exe
+D:\!C#\HomeworkOperatorsExpressionsStatements\09. Trapezoids\bin\Debug\_09.Trapezoids.pdb
+D:\!C#\HomeworkOperatorsExpressionsStatements\09. Trapezoids\obj\Debug\_09.Trapezoids.exe
+D:\!C#\HomeworkOperatorsExpressionsStatements\09. Trapezoids\obj\Debug\_09.Trapezoids.pdb

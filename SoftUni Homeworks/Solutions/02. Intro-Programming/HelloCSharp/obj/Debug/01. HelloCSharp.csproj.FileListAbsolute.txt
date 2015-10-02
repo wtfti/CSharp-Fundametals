@@ -1,0 +1,8 @@
+D:\!C#\Intro-Programming-Homework\HelloCSharp\bin\Debug\HelloCSharp.exe.config
+D:\!C#\Intro-Programming-Homework\HelloCSharp\obj\Debug\HelloCSharp.exe
+D:\!C#\Intro-Programming-Homework\HelloCSharp\obj\Debug\HelloCSharp.pdb
+D:\!C#\Intro-Programming-Homework\HelloCSharp\bin\Debug\HelloCSharp.exe
+D:\!C#\Intro-Programming-Homework\HelloCSharp\bin\Debug\HelloCSharp.pdb
+D:\#GitHUB\CSharp-Fundametals\SoftUni Homeworks\Answers\02. Intro-Programming\HelloCSharp\bin\Debug\HelloCSharp.exe.config
+D:\#GitHUB\CSharp-Fundametals\SoftUni Homeworks\Answers\02. Intro-Programming\HelloCSharp\obj\Debug\HelloCSharp.exe
+D:\#GitHUB\CSharp-Fundametals\SoftUni Homeworks\Answers\02. Intro-Programming\HelloCSharp\obj\Debug\HelloCSharp.pdb

@@ -1,0 +1,6 @@
+D:\!C#\HomeworkOperatorsExpressionsStatements\16. BitsEchangeAdvanced\bin\Debug\_16.BitsEchangeAdvanced.exe.config
+D:\!C#\HomeworkOperatorsExpressionsStatements\16. BitsEchangeAdvanced\bin\Debug\_16.BitsEchangeAdvanced.exe
+D:\!C#\HomeworkOperatorsExpressionsStatements\16. BitsEchangeAdvanced\bin\Debug\_16.BitsEchangeAdvanced.pdb
+D:\!C#\HomeworkOperatorsExpressionsStatements\16. BitsEchangeAdvanced\obj\Debug\_16.BitsEchangeAdvanced.exe
+D:\!C#\HomeworkOperatorsExpressionsStatements\16. BitsEchangeAdvanced\obj\Debug\_16.BitsEchangeAdvanced.pdb
+D:\!C#\HomeworkOperatorsExpressionsStatements\16. BitsEchangeAdvanced\obj\Debug\16. BitsEchangeAdvanced.csprojResolveAssemblyReference.cache

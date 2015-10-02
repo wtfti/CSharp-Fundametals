@@ -1,0 +1,5 @@
+D:\!C#\Loops-Homework\12. Randomize the Numbers 1…N\bin\Debug\_12.Randomize_the_Numbers_1_N.exe.config
+D:\!C#\Loops-Homework\12. Randomize the Numbers 1…N\bin\Debug\_12.Randomize_the_Numbers_1_N.exe
+D:\!C#\Loops-Homework\12. Randomize the Numbers 1…N\bin\Debug\_12.Randomize_the_Numbers_1_N.pdb
+D:\!C#\Loops-Homework\12. Randomize the Numbers 1…N\obj\Debug\_12.Randomize_the_Numbers_1_N.exe
+D:\!C#\Loops-Homework\12. Randomize the Numbers 1…N\obj\Debug\_12.Randomize_the_Numbers_1_N.pdb

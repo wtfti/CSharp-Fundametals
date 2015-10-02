@@ -1,0 +1,6 @@
+D:\!C#\Advanced-CSharp-MultidimensionalArrays-Sets-Dictionaries-Homework\02. Maximal Sum\bin\Debug\_02.Maximal_Sum.exe.config
+D:\!C#\Advanced-CSharp-MultidimensionalArrays-Sets-Dictionaries-Homework\02. Maximal Sum\bin\Debug\_02.Maximal_Sum.exe
+D:\!C#\Advanced-CSharp-MultidimensionalArrays-Sets-Dictionaries-Homework\02. Maximal Sum\bin\Debug\_02.Maximal_Sum.pdb
+D:\!C#\Advanced-CSharp-MultidimensionalArrays-Sets-Dictionaries-Homework\02. Maximal Sum\obj\Debug\_02.Maximal_Sum.exe
+D:\!C#\Advanced-CSharp-MultidimensionalArrays-Sets-Dictionaries-Homework\02. Maximal Sum\obj\Debug\_02.Maximal_Sum.pdb
+D:\!C#\Advanced-CSharp-MultidimensionalArrays-Sets-Dictionaries-Homework\02. Maximal Sum\obj\Debug\02. Maximal Sum.csprojResolveAssemblyReference.cache

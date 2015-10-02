@@ -1,0 +1,5 @@
+D:\!C#\Loops-Homework\16. Decimal to Hexadecimal Number\bin\Debug\_16.Decimal_to_Hexadecimal_Number.exe.config
+D:\!C#\Loops-Homework\16. Decimal to Hexadecimal Number\bin\Debug\_16.Decimal_to_Hexadecimal_Number.exe
+D:\!C#\Loops-Homework\16. Decimal to Hexadecimal Number\bin\Debug\_16.Decimal_to_Hexadecimal_Number.pdb
+D:\!C#\Loops-Homework\16. Decimal to Hexadecimal Number\obj\Debug\_16.Decimal_to_Hexadecimal_Number.exe
+D:\!C#\Loops-Homework\16. Decimal to Hexadecimal Number\obj\Debug\_16.Decimal_to_Hexadecimal_Number.pdb

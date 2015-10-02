@@ -1,0 +1,5 @@
+D:\!C#\Loops-Homework\19. Spiral Matrix\bin\Debug\_19.Spiral_Matrix.exe.config
+D:\!C#\Loops-Homework\19. Spiral Matrix\bin\Debug\_19.Spiral_Matrix.exe
+D:\!C#\Loops-Homework\19. Spiral Matrix\bin\Debug\_19.Spiral_Matrix.pdb
+D:\!C#\Loops-Homework\19. Spiral Matrix\obj\Debug\_19.Spiral_Matrix.exe
+D:\!C#\Loops-Homework\19. Spiral Matrix\obj\Debug\_19.Spiral_Matrix.pdb

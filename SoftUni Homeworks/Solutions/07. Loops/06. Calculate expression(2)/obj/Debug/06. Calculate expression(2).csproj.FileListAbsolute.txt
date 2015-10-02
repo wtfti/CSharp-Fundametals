@@ -1,0 +1,5 @@
+D:\!C#\Loops-Homework\06. Calculate expression(2)\bin\Debug\_06.Calculate_expression_2_.exe.config
+D:\!C#\Loops-Homework\06. Calculate expression(2)\bin\Debug\_06.Calculate_expression_2_.exe
+D:\!C#\Loops-Homework\06. Calculate expression(2)\bin\Debug\_06.Calculate_expression_2_.pdb
+D:\!C#\Loops-Homework\06. Calculate expression(2)\obj\Debug\_06.Calculate_expression_2_.exe
+D:\!C#\Loops-Homework\06. Calculate expression(2)\obj\Debug\_06.Calculate_expression_2_.pdb

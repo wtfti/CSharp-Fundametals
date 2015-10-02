@@ -1,0 +1,6 @@
+D:\!C#\CSharp-Advanced-Topics-Homework\08. Longest Word in a Text\bin\Debug\_08.Longest_Word_in_a_Text.exe.config
+D:\!C#\CSharp-Advanced-Topics-Homework\08. Longest Word in a Text\bin\Debug\_08.Longest_Word_in_a_Text.exe
+D:\!C#\CSharp-Advanced-Topics-Homework\08. Longest Word in a Text\bin\Debug\_08.Longest_Word_in_a_Text.pdb
+D:\!C#\CSharp-Advanced-Topics-Homework\08. Longest Word in a Text\obj\Debug\08. Longest Word in a Text.csprojResolveAssemblyReference.cache
+D:\!C#\CSharp-Advanced-Topics-Homework\08. Longest Word in a Text\obj\Debug\_08.Longest_Word_in_a_Text.exe
+D:\!C#\CSharp-Advanced-Topics-Homework\08. Longest Word in a Text\obj\Debug\_08.Longest_Word_in_a_Text.pdb

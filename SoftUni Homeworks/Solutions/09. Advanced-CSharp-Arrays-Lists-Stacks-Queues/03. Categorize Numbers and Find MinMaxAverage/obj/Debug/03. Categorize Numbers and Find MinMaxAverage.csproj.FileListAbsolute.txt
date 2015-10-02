@@ -1,0 +1,6 @@
+D:\!C#\Advanced-CSharp-Arrays-Lists-Stacks-Queues\03. Categorize Numbers and Find MinMaxAverage\bin\Debug\_03.Categorize_Numbers_and_Find_MinMaxAverage.exe.config
+D:\!C#\Advanced-CSharp-Arrays-Lists-Stacks-Queues\03. Categorize Numbers and Find MinMaxAverage\bin\Debug\_03.Categorize_Numbers_and_Find_MinMaxAverage.exe
+D:\!C#\Advanced-CSharp-Arrays-Lists-Stacks-Queues\03. Categorize Numbers and Find MinMaxAverage\bin\Debug\_03.Categorize_Numbers_and_Find_MinMaxAverage.pdb
+D:\!C#\Advanced-CSharp-Arrays-Lists-Stacks-Queues\03. Categorize Numbers and Find MinMaxAverage\obj\Debug\03. Categorize Numbers and Find MinMaxAverage.csprojResolveAssemblyReference.cache
+D:\!C#\Advanced-CSharp-Arrays-Lists-Stacks-Queues\03. Categorize Numbers and Find MinMaxAverage\obj\Debug\_03.Categorize_Numbers_and_Find_MinMaxAverage.exe
+D:\!C#\Advanced-CSharp-Arrays-Lists-Stacks-Queues\03. Categorize Numbers and Find MinMaxAverage\obj\Debug\_03.Categorize_Numbers_and_Find_MinMaxAverage.pdb

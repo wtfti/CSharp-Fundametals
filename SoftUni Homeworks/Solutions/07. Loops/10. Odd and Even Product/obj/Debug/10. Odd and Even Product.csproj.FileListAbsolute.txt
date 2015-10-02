@@ -1,0 +1,5 @@
+D:\!C#\Loops-Homework\10. Odd and Even Product\bin\Debug\_10.Odd_and_Even_Product.exe.config
+D:\!C#\Loops-Homework\10. Odd and Even Product\bin\Debug\_10.Odd_and_Even_Product.exe
+D:\!C#\Loops-Homework\10. Odd and Even Product\bin\Debug\_10.Odd_and_Even_Product.pdb
+D:\!C#\Loops-Homework\10. Odd and Even Product\obj\Debug\_10.Odd_and_Even_Product.exe
+D:\!C#\Loops-Homework\10. Odd and Even Product\obj\Debug\_10.Odd_and_Even_Product.pdb

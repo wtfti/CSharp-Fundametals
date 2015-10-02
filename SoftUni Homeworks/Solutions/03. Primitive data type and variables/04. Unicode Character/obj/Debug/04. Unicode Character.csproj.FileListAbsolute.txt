@@ -1,0 +1,6 @@
+D:\!C#\Primitive data type and variables - Homework\04. Unicode Character\bin\Debug\_04.Unicode_Character.exe.config
+D:\!C#\Primitive data type and variables - Homework\04. Unicode Character\bin\Debug\_04.Unicode_Character.exe
+D:\!C#\Primitive data type and variables - Homework\04. Unicode Character\bin\Debug\_04.Unicode_Character.pdb
+D:\!C#\Primitive data type and variables - Homework\04. Unicode Character\obj\Debug\04. Unicode Character.csprojResolveAssemblyReference.cache
+D:\!C#\Primitive data type and variables - Homework\04. Unicode Character\obj\Debug\_04.Unicode_Character.exe
+D:\!C#\Primitive data type and variables - Homework\04. Unicode Character\obj\Debug\_04.Unicode_Character.pdb
