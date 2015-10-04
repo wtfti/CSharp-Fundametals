@@ -12,6 +12,7 @@ namespace Tetris
     {
         #region Global Variables
         static bool[,] GameBoard = new bool[TetrisHeight, TetrisWidth];
+        static bool GameRunning = false;
         private static int Points = 0;
         private const int LevelPoints = 10;
         const char BorderCharacter = '|';
@@ -89,7 +90,7 @@ namespace Tetris
             Task.Run(() => PlayMusic());
             StartGame();
             PrintBorders();
-            while (true)
+            while (GameRunning)
             {
                 if (Console.KeyAvailable)
                 {
@@ -130,6 +131,10 @@ namespace Tetris
                     currentBrickRow = 1;
                     currentBrickCol = 5;
                 }
+                else if (!GameRunning)
+                {
+                    break;
+                }
                 else
                 {
                     currentBrickRow++;
@@ -148,11 +153,32 @@ namespace Tetris
                 PrintBorders();
 
                 PrintFigure(currentBrick, currentBrickRow, currentBrickCol);
-
-
-
                 Thread.Sleep(400);
             }
+            GameOverMessage();
+        }
+
+        private static void GameOverMessage()
+        {
+            Console.Clear();
+            Console.Write(String.Format(@"
+   _____                      
+  / ____|                     
+ | |  __  __ _ _ __ ___   ___ 
+ | | |_ |/ _` | '_ ` _ \ / _ \
+ | |__| | (_| | | | | | |  __/
+  \_____|\__,_|_| |_| |_|\___|
+  / __ \                      
+ | |  | |_   _____ _ __       
+ | |  | \ \ / / _ \ '__|      
+ | |__| |\ V /  __/ |         
+  \____/  \_/ \___|_|            
+
+
+You made {0} lines. Press Esc to exit", Points), ConsoleColor.Red);
+            while (Console.ReadKey(true).Key != ConsoleKey.Escape) ;
+            Console.ResetColor();
+            Console.CursorVisible = true;
         }
 
         private static void IsExistingBlock(string direction, char direct, int row, int col)
@@ -284,13 +310,17 @@ namespace Tetris
 
         private static bool CheckForCollisions()
         {
-            //TODO fix bug when moving left and right you can pass thru stacked bricks
             //TODO check for reaching top of the gameboard
             int currentFigureLowestRow = currentBrickRow + currentBrick.GetLength(0);
 
             if (currentFigureLowestRow > TetrisHeight)
             {
                 return true;
+            }
+            if (currentBrickRow == 1 && GameBoard[currentBrickRow, currentBrickCol])
+            {
+                GameOver(true);
+                return false;
             }
 
             for (int figRow = 0; figRow < currentBrick.GetLength(0); figRow++)
@@ -315,8 +345,17 @@ namespace Tetris
             return false;
         }
 
+        private static void GameOver(bool endGame = false)
+        {
+            if (endGame)
+            {
+                GameRunning = false;
+            }
+        }
+
         private static void StartGame()
         {
+            GameRunning = true;
             currentBrick = Bricks[randomGenerator.Next(0, Bricks.Length)];
             nextBrick = Bricks[randomGenerator.Next(0, Bricks.Length)];
         }
