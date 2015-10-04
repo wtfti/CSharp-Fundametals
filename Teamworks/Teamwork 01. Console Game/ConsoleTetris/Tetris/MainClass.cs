@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Collections.Generic;
 using System.Linq;
+using System.Diagnostics;
 namespace Tetris
 {
     internal class MainClass
     {
         #region Global Variables
+         static  List<Tuple<string, long, string>> players = new List<Tuple<string, long, string>>();
         static bool[,] GameBoard = new bool[TetrisHeight, TetrisWidth];
         static bool GameRunning = false;
         private static int Points = 0;
@@ -26,6 +28,7 @@ namespace Tetris
         static bool[,] nextBrick;
         static int currentBrickRow = 0;
         static int currentBrickCol = 4;
+        static Stopwatch timer = new Stopwatch();
         static ConsoleColor currentBrickColor = ConsoleColor.White;
         static Random randomGenerator = new Random();
         static ConsoleColor[] brickColors = new ConsoleColor[] { ConsoleColor.Cyan, ConsoleColor.Green, ConsoleColor.Magenta, ConsoleColor.Gray, ConsoleColor.White, ConsoleColor.Yellow, ConsoleColor.Red };
@@ -86,12 +89,14 @@ namespace Tetris
 
         private static void PlayGame()
         {
+           
             Console.Clear();
             Task.Run(() => PlayMusic());
             StartGame();
             PrintBorders();
             while (GameRunning)
             {
+                timer.Start();
                 if (Console.KeyAvailable)
                 {
                     ConsoleKeyInfo key = Console.ReadKey();
@@ -121,24 +126,28 @@ namespace Tetris
                             break;
                     }
                 }
-
-                if (CheckForCollisions())
+                try
                 {
-                    PrintCurrentFigure();
-                    CheckForFullLines();
-                    currentBrick = nextBrick;
-                    nextBrick = Bricks[randomGenerator.Next(0, Bricks.Length)];
-                    currentBrickRow = 1;
-                    currentBrickCol = 5;
+                    if (CheckForCollisions())
+                    {
+                        PrintCurrentFigure();
+                        CheckForFullLines();
+                        currentBrick = nextBrick;
+                        nextBrick = Bricks[randomGenerator.Next(0, Bricks.Length)];
+                        currentBrickRow = 1;
+                        currentBrickCol = 5;
+                    }
+                    else if (!GameRunning)
+                    {
+                        timer.Stop();
+                        break;
+                    }
+                    else
+                    {
+                        currentBrickRow++;
+                    }
                 }
-                else if (!GameRunning)
-                {
-                    break;
-                }
-                else
-                {
-                    currentBrickRow++;
-                }
+                catch (Exception e) { }
                 //TODO update score
                 //TODO add levels
                 //TODO print next brick
@@ -160,6 +169,7 @@ namespace Tetris
 
         private static void GameOverMessage()
         {
+            Points = 0;
             Console.Clear();
             Console.Write(String.Format(@"
    _____                      
@@ -175,8 +185,29 @@ namespace Tetris
   \____/  \_/ \___|_|            
 
 
-You made {0} lines. Press Esc to exit", Points), ConsoleColor.Red);
-            while (Console.ReadKey(true).Key != ConsoleKey.Escape) ;
+You made {0} lines. Press any key to continue.", Points), ConsoleColor.Red);
+            ConsoleKeyInfo key = Console.ReadKey();
+            if (key != null)
+            {
+                Console.Clear();
+                ShowMyScore();
+                Console.WriteLine("\nWould you like to save your score?Yes/No");
+                string option = Console.ReadLine();
+                if(option=="Yes")
+                {
+                    Console.WriteLine("Please enter your name");
+                    string playerName = Console.ReadLine();
+                    timer.Stop();
+                    RecordPlayerScore(playerName, Points, timer.Elapsed.ToString().Substring(3, 5));
+                    Console.Clear();
+                    PrintMenu();
+                }
+                else
+                {
+                    Console.Clear();
+                    PrintMenu();
+                }
+            }
             Console.ResetColor();
             Console.CursorVisible = true;
         }
@@ -466,9 +497,8 @@ You made {0} lines. Press Esc to exit", Points), ConsoleColor.Red);
             return result;
         }
 
-        static void ShowHighScores()
+        static void ReadFileData()
         {
-            List<Tuple<string, long, string>> players = new List<Tuple<string, long, string>>();
             StreamReader reader = new StreamReader("scores.txt");
             string line;
             bool isFirstLine = true;
@@ -490,6 +520,13 @@ You made {0} lines. Press Esc to exit", Points), ConsoleColor.Red);
                 isFirstLine = false;
             }
             reader.Close();
+        }
+        static void ShowHighScores()
+        {
+           if(players.Count==0)
+            {
+                ReadFileData();
+            }
             var result = players.OrderByDescending(player => player.Item2)
                 .Take(5)
                 .Select(player => player.Item1 + " scored: " + player.Item2 + " in " + player.Item3);
@@ -506,11 +543,41 @@ You made {0} lines. Press Esc to exit", Points), ConsoleColor.Red);
 
         }
 
+
+        static void ShowMyScore()
+        {
+
+            if (players.Count == 0)
+            {
+                ReadFileData();
+            }
+            var higher = players
+                .Where(p=>p.Item2>Points)
+                .OrderBy(player => player.Item2)
+                .Take(2)
+                .Select(player => player.Item1 + " scored: " + player.Item2 + " in " + player.Item3);
+            Console.WriteLine(string.Join("\n",higher));
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.BackgroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine("You scored "+Points+" in "+ timer.Elapsed.ToString().Substring(3, 5));
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.BackgroundColor = ConsoleColor.Black;
+            var lower = players
+              .Where(p => p.Item2 <= Points)
+              .OrderByDescending(player => player.Item2)
+              .Take(2)
+              .Select(player => player.Item1 + " scored: " + player.Item2 + " in " + player.Item3);
+            Console.WriteLine(string.Join("\n", lower));
+           
+
+        }
+
         static void RecordPlayerScore(string playerName, long score, string time)
         {
             using (StreamWriter w = File.AppendText("scores.txt"))
             {
-                w.WriteLine(playerName + " " + score + " " + time + "\n");
+             
+                w.WriteLine(playerName + " " + score + " " + time);
             }
         }
 
@@ -522,7 +589,7 @@ You made {0} lines. Press Esc to exit", Points), ConsoleColor.Red);
             Print(6, 4, "[3] Controls", ConsoleColor.White);
             Print(7, 4, "[4] Exit", ConsoleColor.White);
             Print(8, 4, "Choose number: ", ConsoleColor.White);
-            int option = int.Parse(Console.ReadLine());
+           int option = int.Parse(Console.ReadLine());
             switch (option)
             {
                 case 1: PlayGame(); break;
