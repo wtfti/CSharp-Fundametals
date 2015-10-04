@@ -6,14 +6,20 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Collections.Generic;
 using System.Linq;
+using System.Diagnostics;
 namespace Tetris
 {
     internal class MainClass
     {
         #region Global Variables
+        static    List<Tuple<string, long, string>> players = new List<Tuple<string, long, string>>();
         static bool[,] GameBoard = new bool[TetrisHeight, TetrisWidth];
-        private static int Points = 0;
+        private static long Points = 0;
         private const int LevelPoints = 10;
+        private static int level = 1;
+        private static long pointsToNewLevel = 10;
+        private static int rotatesLeft = 10;
+        private static int rotatesCpy = rotatesLeft;
         const char BorderCharacter = '|';
         const char BrickCharacter = 'o';
         const int TetrisWidth = 10;
@@ -25,6 +31,7 @@ namespace Tetris
         static bool[,] nextBrick;
         static int currentBrickRow = 0;
         static int currentBrickCol = 4;
+        static Stopwatch timer = new Stopwatch();
         static ConsoleColor currentBrickColor = ConsoleColor.White;
         static Random randomGenerator = new Random();
         static ConsoleColor[] brickColors = new ConsoleColor[] {ConsoleColor.Cyan,ConsoleColor.Green,ConsoleColor.Magenta,ConsoleColor.Gray,ConsoleColor.White,ConsoleColor.Yellow,ConsoleColor.Red };
@@ -70,6 +77,7 @@ namespace Tetris
         #endregion
         public static void Main()
         {
+
             //TODO add menu with options - new game, saved game?, high scores, exit
             //TODO color bricks different colors
             Console.ForegroundColor = ConsoleColor.Gray;
@@ -85,12 +93,14 @@ namespace Tetris
 
         private static void PlayGame()
         {
+             timer.Start();
             Console.Clear();
             Task.Run(() => PlayMusic());
             StartGame();
             PrintBorders();
             while (true)
             {
+                
                 if (Console.KeyAvailable)
                 {
                     ConsoleKeyInfo key = Console.ReadKey();
@@ -116,25 +126,81 @@ namespace Tetris
                              }
                             break;
                         case ConsoleKey.Spacebar:
-                            currentBrick = RotateBrick(currentBrick, currentBrickColor); 
+                            if ( rotatesLeft > 0)
+                            {                               
+                                    currentBrick = RotateBrick(currentBrick, currentBrickColor);
+                                    rotatesLeft--;                             
+                            }
                             break;
 
                     }
                 }
-                
-                if (CheckForCollisions())
+                if (isGameOver())
                 {
-                    PrintCurrentFigure();
-                    CheckForFullLines();
-                    currentBrick = nextBrick;
-                    nextBrick = Bricks[randomGenerator.Next(0, Bricks.Length)];
-                    currentBrickRow = 1;
-                    currentBrickCol = 4;
+                    timer.Stop();
+                    GameBoard = new bool[TetrisHeight, TetrisWidth];
+                    Print(10, TetrisWidth+2, "GAME OVER!"); 
+                    ConsoleKeyInfo key = Console.ReadKey();
+                    if (key != null)
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Would you like to save your score? Yes/No");
+                        string choice = Console.ReadLine();
+                        if (choice == "Yes")
+                        {
+                            Console.WriteLine("Enter player name");
+                            string playerName = Console.ReadLine();
+                            ShowMyScoreRange(playerName);
+                            RecordPlayerScore(playerName, Points, timer.Elapsed.ToString().Substring(3,5));
+                            Points = 0;
+                            level = 1;
+                            pointsToNewLevel = 10;
+                            rotatesLeft = 10;
+                            Console.WriteLine("Press any key to go back to menu.");
+                             key = Console.ReadKey();
+                            if (key!=null)
+                            {
+                                PrintMenu();
+                            }
+                        }
+                        else
+                        {
+                            Console.Clear();
+                            PrintMenu();
+                        }
+                    }
+
+                    else
+                    {
+
+                        PrintMenu();
+                    }
+                    
                 }
-                else
+                try
                 {
-                    currentBrickRow++;
+                   
+                    if (CheckForCollisions())
+                    {
+                        PrintCurrentFigure();
+                        CheckForFullLines();
+                        if (Points >= pointsToNewLevel)
+                        {
+                            newLevel();
+                        }
+                        currentBrick = nextBrick;
+                        nextBrick = Bricks[randomGenerator.Next(0, Bricks.Length)];
+                        rotatesLeft = rotatesCpy;
+                        currentBrickRow = 1;
+                        currentBrickCol = 4;
+                        rotatesLeft = rotatesCpy;
+                    }
+                    else
+                    {
+                        currentBrickRow++;
+                    }
                 }
+                catch (Exception e) { }
                 //TODO update score
                 //TODO add levels
                 //TODO print next brick
@@ -149,22 +215,45 @@ namespace Tetris
                 PrintBorders();
 
                 PrintFigure(currentBrick, currentBrickRow, currentBrickCol);
-                
 
-
+               
                 Thread.Sleep(400);
             }
         }
 
+        private static bool isGameOver()
+        {
+            for (int col = 0; col < GameBoard.GetLongLength(1); col++)
+            {
+                if (GameBoard[0, col])
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private static void newLevel()
+        {
+            level++;
+            pointsToNewLevel = Points + pointsToNewLevel * 2;
+            rotatesLeft =  10 - level;
+            rotatesCpy = rotatesLeft;
+
+        }
+
+
         private static void CheckForFullLines()
         {
             int linesRemoved = 0;
-
+           
             for (int row = 0; row < GameBoard.GetLength(0); row++)
             {
                 bool isLineFull = true;
                 for (int col = 0; col < GameBoard.GetLength(1); col++)
                 {
+                   
                     if (GameBoard[row, col] == false)
                     {
                         isLineFull = false;
@@ -180,6 +269,7 @@ namespace Tetris
                         {
                             continue;
                         }
+                       
 
                         for (int colFromNextLine = 0; colFromNextLine < GameBoard.GetLength(1); colFromNextLine++)
                         {
@@ -241,6 +331,7 @@ namespace Tetris
 
                     if (row < 0)
                     {
+                        
                         continue;
                     }
 
@@ -262,10 +353,11 @@ namespace Tetris
 
         static void PrintScore()
         {
-            Print(6, TetrisWidth + 4, "Score:");
+            Print(6, TetrisWidth + 4, "Score: ");
             int scoreStartposition = InfoPanelWidth / 2 - (Points.ToString().Length - 1) / 2;
             scoreStartposition = scoreStartposition + TetrisWidth + 2;
             Print(7, scoreStartposition - 1, Points);
+            Print(9, scoreStartposition - 3, "Level "+level);
         }
 
         static void PrintBorders()
@@ -368,12 +460,33 @@ namespace Tetris
 
         static void ShowHighScores()
         {
-            List<Tuple<string,long,string>> players = new List<Tuple<string, long, string>>();
+            if (players.Count() == 0)
+            {
+                ReadDataFromFile();
+            }
+            var result = players.OrderByDescending(player=> player.Item2)
+                .Take(5)
+                .Select(player => player.Item1 + " scored: "+player.Item2 + " in "+player.Item3);
+          
+            Console.WriteLine("Top 5 scores:");
+            Console.WriteLine(string.Join("\n",result));
+            Console.WriteLine("Press any key to continue...");
+            var key = Console.ReadKey();
+            if (key != null)
+            {
+                Console.Clear();
+                PrintMenu();
+            }
+            
+        }
+
+        static void ReadDataFromFile()
+        {
             StreamReader reader = new StreamReader("scores.txt");
             string line;
             bool isFirstLine = true;
-               while((line=reader.ReadLine())!=null)
-                 {
+            while ((line = reader.ReadLine()) != null)
+            {
                 if (!isFirstLine)
                 {
                     try
@@ -390,20 +503,30 @@ namespace Tetris
                 isFirstLine = false;
             }
             reader.Close();
-            var result = players.OrderByDescending(player=> player.Item2)
-                .Take(5)
-                .Select(player => player.Item1 + " scored: "+player.Item2 + " in "+player.Item3);
-          
-            Console.WriteLine("Top 5 scores:");
-            Console.WriteLine(string.Join("\n",result));
-            Console.WriteLine("Press any key to continue...");
-            string key = Console.ReadLine();
-            if (key != null)
+        }
+
+
+        static void ShowMyScoreRange(string player)
+        {
+            if(players.Count()==0)
             {
-                Console.Clear();
-                PrintMenu();
+                ReadDataFromFile();
             }
-            
+
+            var higher = players.Where(p => p.Item2 > Points)
+                .OrderBy(p => p.Item2)
+                .Take(2)
+                .Select(p => p.Item1 + " " + p.Item2 + " "+p.Item3);
+            Console.WriteLine(string.Join("\n", higher.Reverse()));
+            Console.WriteLine(player + " " + Points + " "+ timer.Elapsed.ToString().Substring(3,5));
+            var lower = players.Where(p => p.Item2 <= Points)
+                .OrderByDescending(p => p.Item2)
+                .Take(2)
+                .Select(p => p.Item1 + " " + p.Item2 + " " + p.Item3);
+          
+            Console.WriteLine(string.Join("\n", lower));
+
+
         }
 
         static void RecordPlayerScore(string playerName, long score, string time)
@@ -416,6 +539,7 @@ namespace Tetris
 
         static void PrintMenu()
         {
+            Console.Clear();
             Print(3, 9, "MENU", ConsoleColor.White);
             Print(4, 4, "[1] New Game", ConsoleColor.White);
             Print(5, 4, "[2] High scores",ConsoleColor.White);
