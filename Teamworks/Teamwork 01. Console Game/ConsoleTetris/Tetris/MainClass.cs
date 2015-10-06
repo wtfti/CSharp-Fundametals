@@ -1,79 +1,169 @@
 ﻿using System;
 using System.Media;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Diagnostics;
+
 namespace Tetris
 {
     internal class MainClass
     {
         #region Global Variables
-         static  List<Tuple<string, long, string>> players = new List<Tuple<string, long, string>>();
-        static bool[,] GameBoard = new bool[TetrisHeight, TetrisWidth];
-        static bool GameRunning = false;
-        private static int Points = 0;
+        private static List<Tuple<string, int, string>> players = new List<Tuple<string, int, string>>();
+        private static bool[,] GameBoard = new bool[TetrisHeight, TetrisWidth];
+        private static bool GameRunning = false;
+        private static bool OnMusic = true;
+        private static int TotalLinesRemoved = 0;
+        private static int Points;
         private const int LevelPoints = 10;
         private static int pointsToNextLevel = 50;
         private static int speed = 400;
         private static int level = 1;
         private static int rotatesLeft = 10;
         private static int rotatesLeftCpy = rotatesLeft;
-        const char BorderCharacter = '|';
-        const char BrickCharacter = 'o';
-        const int TetrisWidth = 10;
-        const int TetrisHeight = 16;
-        const int InfoPanelWidth = 10;
-        const int GameWidth = TetrisWidth + InfoPanelWidth + 3;
-        const int GameHeight = TetrisHeight + 2;
-        static bool[,] currentBrick;
-        static bool[,] nextBrick;
-        static int currentBrickRow = 0;
-        static int currentBrickCol = 4;
-        static Stopwatch timer = new Stopwatch();
-        static ConsoleColor currentBrickColor = ConsoleColor.White;
-        static Random randomGenerator = new Random();
-        static ConsoleColor[] brickColors = new ConsoleColor[] { ConsoleColor.Cyan, ConsoleColor.Green, ConsoleColor.Magenta, ConsoleColor.Gray, ConsoleColor.White, ConsoleColor.Yellow, ConsoleColor.Red };
-        #region BrickArray
-        private static bool[][,] Bricks = new bool[7][,]
+        private const char BorderCharacter = '|';
+        private const char FigureCharacter = 'o';
+        private const int TetrisWidth = 10;
+        private const int TetrisHeight = 16;
+        private const int InfoPanelWidth = 16;
+        private const int GameWidth = TetrisWidth + InfoPanelWidth + 3;
+        private const int GameHeight = TetrisHeight + 2;
+        private static bool[,] currentFigure;
+        private static int currentFigureRow = 0;
+        private static int currentFigureCol = 5;
+        private static int currentFigureNumber;
+        private static Stopwatch timer = new Stopwatch();
+        private static ConsoleColor currentFigureColor = ConsoleColor.White;
+        private static Random randomGenerator = new Random();
+        private static ConsoleColor[] figureColors = { ConsoleColor.Cyan, ConsoleColor.Green, ConsoleColor.Magenta, ConsoleColor.Gray, ConsoleColor.Yellow, ConsoleColor.Red, ConsoleColor.Blue };
+        #region FigureArray
+        private static bool[][,] Figures =
         {
+            new [,]                                   // 0
+            {                                         // 0
+                {true, true, true, true}              // 0
+            },                                        // 0
+                                                      // 0
+            new [,]                                   // 0
+            {                                         // 0
+                {true},                               // 0
+                {true},                               // 0
+                {true},                               // 0
+                {true}                                // 0
+            },          
+
+            new [,]                                   // 1
+            {                                         // 1
+                {true, true, true},                   // 1
+                {false, false, true}                  // 1
+            },                                        // 1
+                                                      // 1
+            new [,]                                   // 1
+            {                                         // 1
+                {false, true},                        // 1
+                {false, true},                        // 1
+                {true, true},                         // 1
+            },                                        // 1
+                                                      // 1
+            new [,]                                   // 1
+            {                                         // 1
+                {true, false, false},                 // 1
+                {true, true, true}                    // 1
+            },                                        // 1
+                                                      // 1
+            new [,]                                   // 1
+            {                                         // 1
+                {true, true},                         // 1
+                {true, false},                        // 1
+                {true, false},                        // 1
+            },                                        // 1
+
+            new [,]                                   // 2
+            {                                         // 2
+                {true, true, true},                   // 2
+                {true, false, false}                  // 2
+            },                                        // 2
+                                                      // 2
+            new [,]                                   // 2
+            {                                         // 2
+                {true, true},                         // 2
+                {false, true},                        // 2
+                {false, true},                        // 2
+            },                                        // 2
+                                                      // 2
+            new [,]                                   // 2
+            {                                         // 2
+                {false, false, true},                 // 2
+                {true, true, true}                    // 2
+            },                                        // 2
+                                                      // 2
+            new [,]                                   // 2
+            {                                         // 2
+                {true, false},                        // 2
+                {true, false},                        // 2
+                {true, true},                         // 2
+            },                                        // 2
+            
+            new [,]                                   // 3
+            {                                         // 3
+                {true, true},                         // 3
+                {true, true}                          // 3
+            },                                        // 3
+            
             new [,]
-            {
-                {true, true, true, true}
-            },
-            new [,]
-            {
-                {true, true, true},
-                {false, false, true}
-            },
-            new [,]
-            {
-                {true, true, true},
-                {true, false, false}
-            },
-            new [,]
-            {
-                {true, true},
-                {true, true}
-            },
-            new [,]
-            {
-                {false, true, true},
-                {true, true, false}
-            },
-            new [,]
-            {
-                {true, true, true},
-                {false, true, false}
-            },
-            new [,]
-            {
-                {true, true, false},
-                {false, true, true}
-            },
+            {                                         // 4
+                {false, true, true},                  // 4
+                {true, true, false}                   // 4
+            },                                        // 4
+                                                      // 4
+            new [,]                                   // 4
+            {                                         // 4
+                {true, false},                        // 4
+                {true, true},                         // 4
+                {false, true}                         // 4
+            },                                        // 4
+            
+            new [,]                                   // 5
+            {                                         // 5
+                {true, true, true},                   // 5
+                {false, true, false}                  // 5
+            },                                        // 5
+                                                      // 5
+            new [,]                                   // 5
+            {                                         // 5
+                {false, true},                        // 5
+                {true, true},                         // 5
+                {false, true}                         // 5
+            },                                        // 5
+                                                      // 5
+            new [,]                                   // 5
+            {                                         // 5
+                {false, true, false},                 // 5
+                {true, true, true}                    // 5
+            },                                        // 5
+                                                      // 5
+            new [,]                                   // 5
+            {                                         // 5
+                {true, false},                        // 5
+                {true, true},                         // 5
+                {true, false}                         // 5
+            },                                        // 5
+            
+            new [,]                                   // 6
+            {                                         // 6
+                {true, true, false},                  // 6
+                {false, true, true}                   // 6
+            },                                        // 6
+                                                      // 6
+            new [,]                                   // 6
+            {                                         // 6
+                {false, true},                        // 6
+                {true, true},                         // 6
+                {true, false}                         // 6
+            },                                        // 6
         };
         #endregion
         #endregion
@@ -82,20 +172,19 @@ namespace Tetris
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.BackgroundColor = ConsoleColor.Black;
             Console.CursorVisible = false;
-            Console.Title = "Tetris";
-            Console.WindowWidth = GameWidth + 20;
-            Console.BufferWidth = GameWidth + 20;
-            Console.WindowHeight = GameHeight;
-            Console.BufferHeight = GameHeight + 1;
+            Console.Title = "Tetris #Team brazerape [SoftUni]";
             PrintMenu();
         }
 
         private static void PlayGame()
         {
-           
             Console.Clear();
-            Task.Run(() => PlayMusic());
+            if (OnMusic)
+            {
+                Task.Run(() => PlayMusic());
+            }
             StartGame();
+            GenerateFigure();
             PrintBorders();
             while (GameRunning)
             {
@@ -107,27 +196,28 @@ namespace Tetris
                     switch (key.Key)
                     {
                         case ConsoleKey.LeftArrow:
-                            if (currentBrickCol > 1)
+                            if (currentFigureCol > 1)
                             {
-                                IsExistingBlock("currentBrickCol", '-', currentBrickRow, currentBrickCol);
+                                Moving('-');
                             }
                             break;
                         case ConsoleKey.RightArrow:
-                            if (currentBrickCol + currentBrick.GetLength(1) - 1 < TetrisWidth)
+                            if (currentFigureCol + currentFigure.GetLength(1) - 1 < TetrisWidth)
                             {
-                                IsExistingBlock("currentBrickCol", '+', currentBrickRow, currentBrickCol);
+                                Moving('+');
                             }
                             break;
                         case ConsoleKey.DownArrow:
-                            if (currentBrickRow + currentBrick.GetLength(0) - 1 < TetrisHeight)
+                            if (currentFigureRow + currentFigure.GetLength(0) - 1 < TetrisHeight)
                             {
-                                currentBrickRow++;
+                                Moving(true);
                             }
                             break;
                         case ConsoleKey.Spacebar:
+
                             if (rotatesLeft > 0)
                             {
-                                currentBrick = RotateBrick(currentBrick, currentBrickColor);
+                                RotateFigure();
                                 rotatesLeft--;
                             }
                             break;
@@ -139,187 +229,246 @@ namespace Tetris
                     {
                         PrintCurrentFigure();
                         CheckForFullLines();
-                        if(Points>=pointsToNextLevel)
+                        if (Points >= pointsToNextLevel)
                         {
                             newLevel();
                         }
+                        GenerateFigure();
 
-                        currentBrick = nextBrick;
-                        nextBrick = Bricks[randomGenerator.Next(0, Bricks.Length)];
                         rotatesLeft = rotatesLeftCpy;
-                        currentBrickRow = 1;
-                        currentBrickCol = 5;
+                        currentFigureRow = 1;
+                        currentFigureCol = 5;
                     }
                     else if (!GameRunning)
                     {
                         timer.Stop();
                         GameOverMessage();
-                        GameRunning = true;
                         break;
                     }
                     else
                     {
-                        currentBrickRow++;
+                        currentFigureRow++;
                     }
                 }
                 catch (Exception e) { }
-                //TODO implement lives?
                 PrintScore();
 
                 PrintGameField();
 
                 PrintBorders();
 
-                PrintFigure(currentBrick, currentBrickRow, currentBrickCol);
+                PrintFigure(currentFigure, currentFigureRow, currentFigureCol);
                 Thread.Sleep(speed);
             }
-         
         }
 
-        private static void newLevel()
+        #region RotateFigure
+        private static void RotateFigure()
         {
-            if(level==5)
+            if (currentFigureNumber != 10)
             {
-                Console.Clear();
-                Console.Write(String.Format(@"
-   _____                      
-  / ____|                     
- | |  __  __ _ _ __ ___   ___ 
- | | |_ |/ _` | '_ ` _ \ / _ \
- | |__| | (_| | | | | | |  __/
-  \_____|\__,_|_| |_| |_|\___|
-Completed 100%, congragulations!!!
- Press any key to continue.", Points), ConsoleColor.Red);
-                ConsoleKeyInfo key = Console.ReadKey();
-                ShowMyScore();
-                
-                RecordPlayerScore();
-               
-            }
-            else
-            { 
-                 GameBoard = new bool[TetrisHeight, TetrisWidth];
-                level++;
-                pointsToNextLevel = Points + pointsToNextLevel * 2;
-                rotatesLeft -= level;
-                rotatesLeftCpy = rotatesLeft;
-                if (speed > 100)
-                  {
-                    speed -= 100;
-                  }
-                 else
-                   {
-                     speed -= 50;
-                    }
-            }
-        }
-
-
-        private static void GameOverMessage()
-        {
-            GameBoard = new bool[TetrisHeight, TetrisWidth];
-            GameRunning = true;
-             currentBrickRow = 0;
-        currentBrickCol = 4;
-            Points = 0;       
-        pointsToNextLevel = 50;
-        speed = 400;
-         level = 1;
-         rotatesLeft = 10;
-        rotatesLeftCpy = rotatesLeft;
-        Console.Clear();
-            Console.Write(String.Format(@"
-   _____                      
-  / ____|                     
- | |  __  __ _ _ __ ___   ___ 
- | | |_ |/ _` | '_ ` _ \ / _ \
- | |__| | (_| | | | | | |  __/
-  \_____|\__,_|_| |_| |_|\___|
-  / __ \                      
- | |  | |_   _____ _ __       
- | |  | \ \ / / _ \ '__|      
- | |__| |\ V /  __/ |         
-  \____/  \_/ \___|_|            
-
-
-You made {0} lines. Press any key to continue.", Points), ConsoleColor.Red);
-            ConsoleKeyInfo key = Console.ReadKey();
-            if (key != null)
-            {
-                Console.Clear();
-                ShowMyScore();
-                RecordPlayerScore();
-            }
-            Console.ResetColor();
-            Console.CursorVisible = true;
-        }
-
-        private static void IsExistingBlock(string direction, char direct, int row, int col)
-        {
-            int currentCol;
-            try
-            {
-                if (direct == '-')
+                switch (currentFigureNumber)
                 {
-                    currentCol = col - 2;
-                    if (currentBrick == Bricks[6] || currentBrick == Bricks[3] || currentBrick == Bricks[1]
-                        || currentBrick == Bricks[2] || currentBrick == Bricks[5] || currentBrick == Bricks[4])
-                    {
-                        if (GameBoard[row, currentCol] || GameBoard[row - 1, currentCol])
+                    case 0:
+                        if ((currentFigureRow + 3) <= (TetrisHeight - 1) &&
+                            !GameBoard[currentFigureRow + 3, currentFigureCol - 1])
                         {
-                            return;
-                        }
-                    }
-                    else if (currentBrick == Bricks[0])
-                    {
-                        if (GameBoard[row, currentCol])
-                        {
-                            return;
-                        }
-                    }
-                }
-
-
-                else
-                {
-                    currentCol = col + 2 > TetrisWidth - 1 ? TetrisWidth - 1 : col + 2;
-                    if (currentBrick == Bricks[6] || currentBrick == Bricks[3] || currentBrick == Bricks[1]
-                        || currentBrick == Bricks[2] || currentBrick == Bricks[5] || currentBrick == Bricks[4])
-                    {
-                        if (GameBoard[row, currentCol] || GameBoard[row - 1, currentCol])
-                        {
-                            return;
-                        }
-                    }
-                    else if (currentBrick == Bricks[0])
-                    {
-                        if (GameBoard[row, currentCol])
-                        {
-                            return;
-                        }
-                    }
-                }
-                switch (direction)
-                {
-                    case "currentBrickCol":
-                        if (direct == '-')
-                        {
-                            currentBrickCol--;
-                        }
-                        else
-                        {
-                            currentBrickCol++;
+                            currentFigureNumber = 1;
                         }
                         break;
-                    case "currentBrickRow":
-                        if (direct == '-')
+                    case 1:
+                        if ((currentFigureCol + 3) <= (TetrisWidth - 1) &&
+                            !GameBoard[currentFigureRow, (currentFigureCol - 1) + 3])
                         {
-                            currentBrickRow--;
+                            currentFigureNumber = 0;
+                        }
+                        break;
+                    case 2:
+                        if ((currentFigureRow + 2) <= (TetrisHeight - 1) &&
+                            !GameBoard[currentFigureRow + 2, currentFigureCol] &&
+                            !GameBoard[currentFigureRow + 2, currentFigureCol + 1])
+                        {
+                            currentFigureNumber = 3;
+                        }
+                        break;
+                    case 3:
+                        if ((currentFigureCol + 1) <= (TetrisWidth - 1) && //
+                            !GameBoard[currentFigureRow, currentFigureCol] &&
+                            !GameBoard[currentFigureRow, currentFigureCol + 1])
+                        {
+                            currentFigureNumber = 4;
+                        }
+                        break;
+                    case 4:
+                        if ((currentFigureRow + 2) <= (TetrisHeight - 1) &&
+                            !GameBoard[currentFigureRow, currentFigureCol])
+                        {
+                            currentFigureNumber = 5;
+                        }
+                        break;
+                    case 5:
+                        if ((currentFigureCol + 1) <= (TetrisWidth - 1) &&
+                            !GameBoard[currentFigureRow, currentFigureCol + 1] &&
+                            !GameBoard[currentFigureRow + 1, currentFigureCol + 1])
+                        {
+                            currentFigureNumber = 2;
+                        }
+                        break;
+                    case 6:
+                        if ((currentFigureCol + 1) <= (TetrisHeight - 1) &&
+                            !GameBoard[currentFigureRow + 1, currentFigureCol + 1] &&
+                            !GameBoard[currentFigureRow + 2, currentFigureCol + 1])
+                        {
+                            currentFigureNumber = 7;
+                        }
+                        break;
+                    case 7:
+                        if ((currentFigureCol - 2) >= 0 &&
+                            !GameBoard[currentFigureRow, currentFigureCol - 2])
+                        {
+                            currentFigureNumber = 8;
+                        }
+                        break;
+                    case 8:
+                        if (!GameBoard[currentFigureRow, currentFigureCol - 1] &&
+                            !GameBoard[currentFigureRow - 1, currentFigureCol - 1])
+                        {
+                            currentFigureNumber = 9;
+                        }
+                        break;
+                    case 9:
+                        if ((currentFigureCol + 1) <= (TetrisWidth - 1) &&
+                            !GameBoard[currentFigureRow + 1, currentFigureCol + 1])
+                        {
+                            currentFigureNumber = 6;
+                        }
+                        break;
+                    case 11:
+                        if ((currentFigureCol + 2) <= (TetrisHeight - 1) &&
+                            !GameBoard[currentFigureRow + 2, currentFigureCol + 2])
+                        {
+                            currentFigureNumber = 12;
+                        }
+                        break;
+                    case 12:
+                        if ((currentFigureCol + 1) <= (TetrisWidth - 1) &&
+                            !GameBoard[currentFigureRow + 2, currentFigureCol - 1] &&
+                            !GameBoard[currentFigureRow + 1, currentFigureCol + 1])
+                        {
+                            currentFigureNumber = 11;
+                        }
+                        break;
+                    case 13:
+                        if ((currentFigureRow + 2) <= (TetrisHeight - 1) &&
+                            !GameBoard[currentFigureRow + 1, currentFigureCol - 1] &&
+                            !GameBoard[currentFigureRow + 2, currentFigureCol])
+                        {
+                            currentFigureNumber = 14;
+                        }
+                        break;
+                    case 14:
+                        if ((currentFigureRow - 1) >= 0 &&
+                            (currentFigureRow + 1) <= (TetrisWidth - 1) &&
+                            !GameBoard[currentFigureRow, currentFigureCol - 1] &&
+                            !GameBoard[currentFigureRow + 1, currentFigureCol + 1])
+                        {
+                            currentFigureNumber = 15;
+                        }
+                        break;
+                    case 15:
+                        if ((currentFigureRow + 2) <= (TetrisWidth - 1) &&
+                            !GameBoard[currentFigureRow + 2, currentFigureCol] &&
+                            !GameBoard[currentFigureRow + 1, currentFigureCol + 1])
+                        {
+                            currentFigureNumber = 16;
+                        }
+                        break;
+                    case 16:
+                        if ((currentFigureRow - 1) >= 0 &&
+                            (currentFigureCol + 1) <= (TetrisWidth - 1) &&
+                            !GameBoard[currentFigureRow + 1, currentFigureCol - 2] &&
+                            !GameBoard[currentFigureRow + 2, currentFigureCol] &&
+                            !GameBoard[currentFigureRow + 1, currentFigureCol + 1])
+                        {
+                            currentFigureNumber = 13;
+                        }
+                        break;
+                    case 17:
+                        if ((currentFigureRow + 2) <= (TetrisHeight - 1) &&
+                            !GameBoard[currentFigureRow + 1, currentFigureCol - 1] &&
+                            !GameBoard[currentFigureRow + 2, currentFigureCol - 1])
+                        {
+                            currentFigureNumber = 18;
+                        }
+                        break;
+                    case 18:
+                        if ((currentFigureCol + 1) <= (TetrisWidth - 1) &&
+                            !GameBoard[currentFigureRow, currentFigureCol - 1] &&
+                            !GameBoard[currentFigureRow + 1, currentFigureCol + 1])
+                        {
+                            currentFigureNumber = 17;
                         }
                         break;
                 }
+                currentFigure = Figures[currentFigureNumber];
             }
-            catch (Exception e) { }
+        }
+        #endregion
+
+        private static void Moving(char direction)
+        {
+            if (direction == '-')
+            {
+                for (int brickRow = 0; brickRow < currentFigure.GetLength(0); brickRow++)
+                {
+                    for (int brickCol = 0; brickCol < currentFigure.GetLength(1); brickCol++)
+                    {
+                        int row = (currentFigureRow - 1) + brickRow;
+                        int col = (currentFigureCol - 2) + brickCol;
+
+                        if (currentFigure[brickRow, brickCol] && GameBoard[row, col])
+                        {
+                            return;
+                        }
+                    }
+                }
+                currentFigureCol--;
+            }
+            else if (direction == '+')
+            {
+                for (int brickRow = 0; brickRow < currentFigure.GetLength(0); brickRow++)
+                {
+                    for (int brickCol = 0; brickCol < currentFigure.GetLength(1); brickCol++)
+                    {
+                        int row = (currentFigureRow - 1) + brickRow;
+                        int col = (currentFigureCol) + brickCol;
+
+                        if (currentFigure[brickRow, brickCol] && GameBoard[row, col])
+                        {
+                            return;
+                        }
+                    }
+                }
+                currentFigureCol++;
+            }
+        }
+
+        private static void Moving(bool isRowDown)
+        {
+            for (int brickRow = 0; brickRow < currentFigure.GetLength(0); brickRow++)
+            {
+                for (int brickCol = 0; brickCol < currentFigure.GetLength(1); brickCol++)
+                {
+                    int row = currentFigureRow + brickRow;
+                    int col = (currentFigureCol - 1) + brickCol;
+
+                    if (row > (TetrisHeight - 1) || (currentFigure[brickRow, brickCol] && GameBoard[row, col]))
+                    {
+                        return;
+                    }
+                }
+            }
+            currentFigureRow++;
         }
 
         private static void CheckForFullLines()
@@ -358,28 +507,28 @@ You made {0} lines. Press any key to continue.", Points), ConsoleColor.Red);
                     {
                         GameBoard[0, colLastLine] = false;
                     }
-
+                    TotalLinesRemoved++;
                     linesRemoved++;
                 }
             }
 
             if (linesRemoved > 0)
             {
-                Points += LevelPoints*linesRemoved;
+                Points += LevelPoints * linesRemoved;
             }
 
         }
 
         private static void PrintCurrentFigure()
         {
-            for (int brickRow = 0; brickRow < currentBrick.GetLength(0); brickRow++)
+            for (int brickRow = 0; brickRow < currentFigure.GetLength(0); brickRow++)
             {
-                for (int brickCol = 0; brickCol < currentBrick.GetLength(1); brickCol++)
+                for (int brickCol = 0; brickCol < currentFigure.GetLength(1); brickCol++)
                 {
-                    int row = currentBrickRow - 1 + brickRow;
-                    int col = currentBrickCol - 1 + brickCol;
+                    int row = (currentFigureRow - 1) + brickRow;
+                    int col = (currentFigureCol - 1) + brickCol;
 
-                    if (currentBrick[brickRow, brickCol])
+                    if (currentFigure[brickRow, brickCol])
                     {
                         GameBoard[row, col] = true;
                     }
@@ -389,31 +538,31 @@ You made {0} lines. Press any key to continue.", Points), ConsoleColor.Red);
 
         private static bool CheckForCollisions()
         {
-            int currentFigureLowestRow = currentBrickRow + currentBrick.GetLength(0);
+            int currentFigureLowestRow = currentFigureRow + currentFigure.GetLength(0);
 
             if (currentFigureLowestRow > TetrisHeight)
             {
                 return true;
             }
-            if (currentBrickRow == 1 && GameBoard[currentBrickRow, currentBrickCol])
+            if (currentFigureRow == 1 && GameBoard[currentFigureRow, currentFigureCol])
             {
                 GameOver(true);
                 return false;
             }
 
-            for (int figRow = 0; figRow < currentBrick.GetLength(0); figRow++)
+            for (int figRow = 0; figRow < currentFigure.GetLength(0); figRow++)
             {
-                for (int figCol = 0; figCol < currentBrick.GetLength(1); figCol++)
+                for (int figCol = 0; figCol < currentFigure.GetLength(1); figCol++)
                 {
-                    var row = currentBrickRow + figRow;
-                    var col = currentBrickCol - 1 + figCol;
+                    var row = currentFigureRow + figRow;
+                    var col = (currentFigureCol - 1) + figCol;
 
                     if (row < 0)
                     {
                         continue;
                     }
 
-                    if (GameBoard[row, col] && currentBrick[figRow, figCol])
+                    if (GameBoard[row, col] && currentFigure[figRow, figCol])
                     {
                         return true;
                     }
@@ -434,17 +583,30 @@ You made {0} lines. Press any key to continue.", Points), ConsoleColor.Red);
         private static void StartGame()
         {
             GameRunning = true;
-            currentBrick = Bricks[randomGenerator.Next(0, Bricks.Length)];
-            nextBrick = Bricks[randomGenerator.Next(0, Bricks.Length)];
+            GameBoard = new bool[TetrisHeight, TetrisWidth];
+            currentFigureRow = 1;
+            currentFigureCol = 5;
+            Points = 0;
+            pointsToNextLevel = 50;
+            speed = 400;
+            level = 1;
+            rotatesLeft = 10;
+            rotatesLeftCpy = rotatesLeft;
+        }
+
+        private static void GenerateFigure()
+        {
+            currentFigureNumber = randomGenerator.Next(0, Figures.Length);
+            currentFigure = Figures[currentFigureNumber];
         }
 
         static void PrintScore()
         {
-            Print(6, TetrisWidth + 4, "Score:");
-            int scoreStartposition = InfoPanelWidth / 2 - (Points.ToString().Length - 1) / 2;
-            scoreStartposition = scoreStartposition + TetrisWidth + 2;
-            Print(7, scoreStartposition - 1, Points);
-            Print(9, scoreStartposition -4, "Level: "+level);
+            int pos = (InfoPanelWidth / 2) + 5;
+            Print(3, pos, string.Format("Time: {0:mm\\:ss} s", timer.Elapsed));
+            Print(5, pos, "Score: " + Points);
+            Print(7, pos, "Level: " + level);
+
         }
 
         static void PrintBorders()
@@ -478,7 +640,7 @@ You made {0} lines. Press any key to continue.", Points), ConsoleColor.Red);
                 {
                     if (GameBoard[row - 1, col - 1])
                     {
-                        Print(row, col, BrickCharacter);
+                        Print(row, col, FigureCharacter);
                     }
                     else
                     {
@@ -497,18 +659,19 @@ You made {0} lines. Press any key to continue.", Points), ConsoleColor.Red);
                     if (figure[x, y])
                     {
                         SetCurrentBrickColor(figure);
-                        Print(row + x, col + y, BrickCharacter, currentBrickColor);
+                        Print(row + x, col + y, FigureCharacter, currentFigureColor);
                     }
                 }
             }
         }
         static void SetCurrentBrickColor(bool[,] currentBrick)
         {
-            for (int i = 0; i < Bricks.GetLength(0); i++)
+            int randomColor = randomGenerator.Next(0, figureColors.Length);
+            for (int i = 0; i < Figures.GetLength(0); i++)
             {
-                if (currentBrick == Bricks[i])
+                if (currentBrick == Figures[i])
                 {
-                    currentBrickColor = brickColors[i];
+                    currentFigureColor = figureColors[randomColor];
                     break;
                 }
             }
@@ -517,10 +680,9 @@ You made {0} lines. Press any key to continue.", Points), ConsoleColor.Red);
         {
             SoundPlayer player = new SoundPlayer();
             player.SoundLocation = "../../tetris-tone.wav";
-            //player.PlayLooping();
+            player.PlayLooping();
         }
 
-        //TODO: add option to rotate left or right?
         public static bool[,] RotateBrick(bool[,] input, ConsoleColor color)
         {
             bool[,] result = new bool[input.GetLength(1), input.GetLength(0)];
@@ -545,35 +707,27 @@ You made {0} lines. Press any key to continue.", Points), ConsoleColor.Red);
             return result;
         }
 
-        static void ReadFileData()
+        static void ReadScoreFile()
         {
-            StreamReader reader = new StreamReader("scores.txt");
-            string line;
-            bool isFirstLine = true;
-            while ((line = reader.ReadLine()) != null)
+            using (StreamReader reader = new StreamReader("scores.txt"))
             {
-                if (!isFirstLine)
+                string line;
+                while (!string.IsNullOrEmpty(line = reader.ReadLine()))
                 {
-                    try
-                    {
-                        string[] data = line.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
-                        string name = data[0];
-                        long score = long.Parse(data[1]);
-                        string time = data[2];
+                    string[] data = line.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                    string name = data[0];
+                    int score = int.Parse(data[1]);
+                    string time = data[2];
 
-                        players.Add(new Tuple<string, long, string>(name, score, time));
-                    }
-                    catch (Exception e) { }
+                    players.Add(new Tuple<string, int, string>(name, score, time));
                 }
-                isFirstLine = false;
             }
-            reader.Close();
         }
         static void ShowHighScores()
         {
-           if(players.Count==0)
+            if (players.Count == 0)
             {
-                ReadFileData();
+                ReadScoreFile();
             }
             var result = players.OrderByDescending(player => player.Item2)
                 .Take(5)
@@ -591,83 +745,87 @@ You made {0} lines. Press any key to continue.", Points), ConsoleColor.Red);
 
         }
 
-
-        static void ShowMyScore()
-        {
-
-            if (players.Count == 0)
-            {
-                ReadFileData();
-            }
-            var higher = players
-                .Where(p=>p.Item2>Points)
-                .OrderBy(player => player.Item2)
-                .Take(2)
-                .Select(player => player.Item1 + " scored: " + player.Item2 + " in " + player.Item3);
-            Console.WriteLine(string.Join("\n",higher));
-            Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Console.BackgroundColor = ConsoleColor.DarkRed;
-            Console.WriteLine("You scored "+Points+" in "+ timer.Elapsed.ToString().Substring(3, 5));
-            Console.ForegroundColor = ConsoleColor.Gray;
-            Console.BackgroundColor = ConsoleColor.Black;
-            var lower = players
-              .Where(p => p.Item2 <= Points)
-              .OrderByDescending(player => player.Item2)
-              .Take(2)
-              .Select(player => player.Item1 + " scored: " + player.Item2 + " in " + player.Item3);
-            Console.WriteLine(string.Join("\n", lower));
-           
-
-        }
-
         static void RecordPlayerScore()
         {
             Console.Clear();
             Console.WriteLine("\nWould you like to save your score?Yes/No");
-            string option = Console.ReadLine();
-            if (option == "Yes")
+            string option = Console.ReadLine().ToLower();
+            if (option == "Yes".ToLower())
             {
                 Console.WriteLine("Please enter your name");
                 string playerName = Console.ReadLine();
                 timer.Stop();
                 using (StreamWriter w = File.AppendText("scores.txt"))
                 {
-
                     w.WriteLine(playerName + " " + Points + " " + timer.Elapsed.ToString().Substring(3, 5));
                 }
-                Console.Clear();
-                PrintMenu();
             }
-            else
-            {
-                Console.Clear();
-                PrintMenu();
-            }
-           
+            Console.Clear();
+            PrintMenu();
         }
 
-        static void PrintMenu()
+        private static void PrintMenu()
         {
-            Print(3, 9, "MENU", ConsoleColor.White);
-            Print(4, 4, "[1] New Game", ConsoleColor.White);
-            Print(5, 4, "[2] High scores", ConsoleColor.White);
-            Print(6, 4, "[3] Controls", ConsoleColor.White);
-            Print(7, 4, "[4] Exit", ConsoleColor.White);
-            Print(8, 4, "Choose number: ", ConsoleColor.White);
-           int option = int.Parse(Console.ReadLine());
-            switch (option)
+            Console.SetWindowSize(38, TetrisHeight + 5);
+            Console.BufferWidth = 38;
+            Console.BufferHeight = TetrisHeight + 5;
+
+
+            //Console.WindowWidth = 37;
+            Print(0, 0, @"
+  ____         __ _   _   _       _ 
+ / ___|  ___  / _| |_| | | |_ __ (_)
+ \___ \ / _ \| |_| __| | | | '_ \| |
+  ___) | (_) |  _| |_| |_| | | | | |
+ |____/ \___/|_|  \__|\___/|_| |_|_|
+                                    ", ConsoleColor.Blue);
+            Print(7, 12, @"Team: 
+            wtflolwut 
+            ValentinKolev 
+            Orhan 
+            DigitalParanoid
+", ConsoleColor.Cyan);
+            Print(14, 12, "MENU", ConsoleColor.White);
+            Print(15, 12, "[1] New Game", ConsoleColor.White);
+            Print(16, 12, "[2] High scores", ConsoleColor.White);
+            Print(17, 12, "[3] Controls", ConsoleColor.White);
+            Print(18, 12, "[4] Music is " + (OnMusic ? "ON" : "OFF"), ConsoleColor.White);
+            Print(19, 12, "[5] Exit", ConsoleColor.White);
+            Print(20, 12, "Choose number: ", ConsoleColor.White);
+            int option;
+            if (int.TryParse(Console.ReadLine(), out option))
             {
-                case 1: PlayGame(); break;
-                case 2: ShowHighScores(); break;
-                case 3: PrintControlsInfo(); break;
-                case 4: Environment.Exit(0); break;
-                default: Environment.Exit(0); break;
+                Console.WriteLine();
+                switch (option)
+                {
+                    case 1:
+                        Console.WindowWidth = GameWidth + 1;
+                        Console.BufferWidth = GameWidth + 1;
+                        Console.WindowHeight = GameHeight + 1;
+                        Console.BufferHeight = GameHeight + 1;
+                        PlayGame();
+                        break;
+                    case 2:
+                        ShowHighScores();
+                        break;
+                    case 3:
+                        PrintControlsInfo();
+                        break;
+                    case 4:
+                        OnMusic = !OnMusic;
+                        Console.Clear();
+                        PrintMenu();
+                        break;
+                    case 5:
+                        Environment.Exit(0);
+                        break;
+                }
             }
         }
         static void PrintControlsInfo()
         {
             Console.Clear();
-            Console.Write(@"C# Console Tetris
+            Console.Write(@"
 =======================
 
 Controls:
@@ -677,15 +835,84 @@ Controls:
 [space] Rotate Block
 [↓] Push block down
 
-Press anykey to
-go back
+Press anykey to go back
+
+=======================
 ");
             Console.ReadKey(true);
             Console.Clear();
             Main();
         }
+
+        private static void newLevel()
+        {
+            if (level == 5)
+            {
+                GameOver();
+                Console.WindowHeight = GameHeight + 10;
+                Console.BufferHeight = GameHeight + 10;
+                Console.Clear();
+                Console.Write(String.Format(@"
+   _____                      
+  / ____|                     
+ | |  __  __ _ _ __ ___   ___ 
+ | | |_ |/ _` | '_ ` _ \ / _ \
+ | |__| | (_| | | | | | |  __/
+  \_____|\__,_|_| |_| |_|\___|
+Completed 100%, congragulations!!!
+You made {0} lines. You scored {1} in {2}
+
+Press any key to continue...", TotalLinesRemoved, Points, timer.Elapsed.ToString().Substring(3, 5)), ConsoleColor.Red);
+                Console.ReadKey();
+                RecordPlayerScore();
+            }
+            else
+            {
+                GameBoard = new bool[TetrisHeight, TetrisWidth];
+                level++;
+                pointsToNextLevel = Points + pointsToNextLevel * 2;
+                rotatesLeft -= level;
+                rotatesLeftCpy = rotatesLeft;
+                if (speed > 100)
+                {
+                    speed -= 100;
+                }
+                else
+                {
+                    speed -= 50;
+                }
+            }
+        }
+
+        private static void GameOverMessage()
+        {
+            Console.WindowHeight = GameHeight + 10;
+            Console.BufferHeight = GameHeight + 10;
+            Console.Clear();
+            Console.Write(String.Format(@"
+   _____                      
+  / ____|                     
+ | |  __  __ _ _ __ ___   ___ 
+ | | |_ |/ _` | '_ ` _ \ / _ \
+ | |__| | (_| | | | | | |  __/
+  \_____|\__,_|_| |_| |_|\___|
+  / __ \                      
+ | |  | |_   _____ _ __       
+ | |  | \ \ / / _ \ '__|      
+ | |__| |\ V /  __/ |         
+  \____/  \_/ \___|_|            
+
+
+You made {0} lines. You scored {1} in {2}", TotalLinesRemoved, Points, timer.Elapsed.ToString().Substring(3, 5)), ConsoleColor.Red);
+            Console.WriteLine("Press any key to continue..");
+            ConsoleKeyInfo key = Console.ReadKey();
+            if (key != null)
+            {
+                Console.Clear();
+                RecordPlayerScore();
+            }
+            Console.ResetColor();
+            Console.CursorVisible = true;
+        }
     }
-
-
-
 }
