@@ -20,8 +20,6 @@ namespace Tetris
         private static bool isMusicOn = true;
         private static int totalLinesRemoved = 0;
         private static int points;
-        //private const int LevelPoints = 10;
-        //private static int pointsToNextLevel = 50;
         private static int[] clearedLinesToChangeLevel = new int[] { 5, 10, 15, 20, 20 };
         private static int speed = 400;
         private static int level = 1;
@@ -233,10 +231,6 @@ namespace Tetris
                     {
                         PrintCurrentFigure();
                         CheckForFullLines();
-                        //if (points >= pointsToNextLevel)
-                        //{
-                        //    ChangeLevel();
-                        //}
                         if (totalLinesRemoved >= clearedLinesToChangeLevel[level - 1])
                         {
                             ChangeLevel();
@@ -521,10 +515,6 @@ namespace Tetris
                 }
             }
 
-            //if (linesRemoved > 0)
-            //{
-            //    points += level * linesRemoved;
-            //}
             switch (linesRemoved)
             {
                 case 0: break;
@@ -983,7 +973,6 @@ Press any key to continue...", totalLinesRemoved, points, timer.Elapsed.ToString
             {
                 GameBoard = new bool[TetrisHeight, TetrisWidth];
                 level++;
-                //pointsToNextLevel = points + pointsToNextLevel * 2;
                 remainingRotations -= level;
                 remainingRotationsCpy = remainingRotations;
                 if (speed > 100)
