@@ -6,6 +6,7 @@ using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Diagnostics;
+using System.Text.RegularExpressions;
 
 namespace Tetris
 {
@@ -27,6 +28,7 @@ namespace Tetris
         private static int rotatesLeftCpy = rotatesLeft;
         private const char BorderCharacter = '|';
         private const char FigureCharacter = 'o';
+        private static Dictionary<int, Tuple<string, long, string>> standingsPlaceHolder = Standings();
         private const int TetrisWidth = 10;
         private const int TetrisHeight = 16;
         private const int InfoPanelWidth = 16;
@@ -709,41 +711,130 @@ namespace Tetris
 
         static void ReadScoreFile()
         {
-            using (StreamReader reader = new StreamReader("scores.txt"))
+            using (StreamReader reader = new StreamReader( @"../../scores.txt"))
             {
+                bool isFirstLine = true;
                 string line;
                 while (!string.IsNullOrEmpty(line = reader.ReadLine()))
                 {
-                    string[] data = line.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-                    string name = data[0];
-                    int score = int.Parse(data[1]);
-                    string time = data[2];
+                    if (!isFirstLine)
+                    {
+                        try
+                        {
+                            string[] data = line.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                            string name = data[0];
+                            int score = int.Parse(data[1]);
+                            string time = data[2];
 
-                    players.Add(new Tuple<string, int, string>(name, score, time));
+                            players.Add(new Tuple<string, int, string>(name, score, time));
+                        }
+                        catch(Exception e) { }
+                    }
+                    isFirstLine = false;
+                }
                 }
             }
+        
+
+        static void ShowHighScores(int skip = -5)
+        {
+
+            Console.Clear();
+            if (players.Count == 0)
+            {
+                ReadScoreFile();
+            }
+            var scores = standingsPlaceHolder
+                   .Skip(skip + 5)
+                   .Take(5)
+                   .Select(player => player.Key + "." + player.Value.Item1 + " scored: " + player.Value.Item2 + " in " + player.Value.Item3);
+
+            Console.WriteLine("Top 5 scores:\n");
+            Console.WriteLine(string.Join("\n", scores));
+            Console.WriteLine();
+            Console.WriteLine("Press arrow down and up to scroll and any other key to go back");
+            Console.WriteLine();
+
+            ConsoleKeyInfo key = Console.ReadKey();
+            if (key.Key == ConsoleKey.DownArrow)
+            {
+                if (skip > standingsPlaceHolder.Count / 5)
+                {
+                    skip = standingsPlaceHolder.Count / 5;
+                }
+                ShowHighScores(skip + 5);
+
+            }
+            else if (key.Key == ConsoleKey.UpArrow)
+            {
+
+                if (skip < -5)
+                {
+                    skip = 0;
+                }
+                ShowHighScores(skip - 5);
+            }
+            else
+            {
+                Console.Clear(); PrintMenu();
+            }
         }
-        static void ShowHighScores()
+
+        static void ShowMyScore()
         {
             if (players.Count == 0)
             {
                 ReadScoreFile();
             }
-            var result = players.OrderByDescending(player => player.Item2)
-                .Take(5)
-                .Select(player => player.Item1 + " scored: " + player.Item2 + " in " + player.Item3);
+            
+            var higher = standingsPlaceHolder
+                .Where(p => p.Value.Item2 > Points)
+                .OrderByDescending(player => player.Key)
+                .Take(3)
+                .Reverse()
+                .Select(player => player.Key + "." + player.Value.Item1 + " scored: " + player.Value.Item2 + " in " + player.Value.Item3);
+            Console.WriteLine(string.Join("\n", higher));
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.BackgroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine("You scored " + Points + " in " + timer.Elapsed.ToString().Substring(3, 5));
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.BackgroundColor = ConsoleColor.Black;
+            var lower = standingsPlaceHolder
+              .Where(p => p.Value.Item2 <= Points)
+              .OrderBy(player => player.Key)
+              .Take(3)
+              .Select(player => player.Key + "." + player.Value.Item1 + " scored: " + player.Value.Item2 + " in " + player.Value.Item3);
+            Console.WriteLine(string.Join("\n", lower));
 
-            Console.WriteLine("Top 5 scores:");
-            Console.WriteLine(string.Join("\n", result));
-            Console.WriteLine("Press any key to continue...");
-            string key = Console.ReadLine();
-            if (key != null)
-            {
-                Console.Clear();
-                PrintMenu();
-            }
 
         }
+
+        static Dictionary<int, Tuple<string, long, string>> Standings()
+        {
+            var dic = new Dictionary<int, Tuple<string, long, string>>();
+            if(players.Count==0)
+            {
+                ReadScoreFile();
+            }
+            var result = players
+                .OrderByDescending(p => p.Item2)
+                .ThenBy(p => p.Item3)
+                .Select(p => p.Item1 + " scored " + p.Item2 + " in " + p.Item3);
+
+            for (int i = 1; i <= players.Count; i++)
+            {
+                var items = result.Skip(i - 1).Take(1).Select(p => p).ToArray();
+                var split = items[0].Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
+                var name = split[0];
+                var score = long.Parse(split[2]);
+                var time = split.Last();
+                dic.Add(i, new Tuple<string, long, string>(name, score, time));
+            }
+
+            return dic;
+
+        }
+
 
         static void RecordPlayerScore()
         {
@@ -754,10 +845,13 @@ namespace Tetris
             {
                 Console.WriteLine("Please enter your name");
                 string playerName = Console.ReadLine();
+                playerName = Regex.Replace(playerName, @"\s*", "_");
                 timer.Stop();
-                using (StreamWriter w = File.AppendText("scores.txt"))
+                using (StreamWriter w = File.AppendText(@"../../scores.txt"))
                 {
                     w.WriteLine(playerName + " " + Points + " " + timer.Elapsed.ToString().Substring(3, 5));
+                    players.Add(new Tuple<string, int, string>(playerName,Points, timer.Elapsed.ToString().Substring(3, 5)));
+                    standingsPlaceHolder = Standings();
                 }
             }
             Console.Clear();
@@ -869,6 +963,7 @@ You made {0} lines. You scored {1} in {2}
 Press any key to continue...", TotalLinesRemoved, Points, timer.Elapsed.ToString().Substring(3, 5)), ConsoleColor.Red);
                 Console.ReadKey();
                 RecordPlayerScore();
+                
             }
             else
             {
@@ -913,7 +1008,13 @@ You made {0} lines. You scored {1} in {2}", TotalLinesRemoved, Points, timer.Ela
             if (key != null)
             {
                 Console.Clear();
-                RecordPlayerScore();
+                ShowMyScore();
+               key = Console.ReadKey();
+                if (key != null)
+                {
+                      Console.Clear();
+                    RecordPlayerScore();
+                }
             }
             Console.ResetColor();
             Console.CursorVisible = true;
