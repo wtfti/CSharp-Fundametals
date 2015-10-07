@@ -15,6 +15,7 @@ namespace Tetris
         private static List<Tuple<string, int, string>> players = new List<Tuple<string, int, string>>();
         private static bool[,] GameBoard = new bool[TetrisHeight, TetrisWidth];
         private static bool GameRunning = false;
+        private static SoundPlayer player = new SoundPlayer();
         private static bool OnMusic = true;
         private static int TotalLinesRemoved = 0;
         private static int Points;
@@ -678,7 +679,6 @@ namespace Tetris
         }
         static void PlayMusic()
         {
-            SoundPlayer player = new SoundPlayer();
             player.SoundLocation = "../../tetris-tone.wav";
             player.PlayLooping();
         }
@@ -813,6 +813,10 @@ namespace Tetris
                         break;
                     case 4:
                         OnMusic = !OnMusic;
+                        if (!OnMusic)
+                        {
+                            player.Stop();
+                        }
                         Console.Clear();
                         PrintMenu();
                         break;
