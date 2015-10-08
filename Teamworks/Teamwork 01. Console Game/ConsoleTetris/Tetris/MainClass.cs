@@ -688,7 +688,7 @@ namespace Tetris
         }
         static void PlayMusic()
         {
-            player.SoundLocation = "tetris-tone.wav";
+            player.SoundLocation = @"../../tetris-tone.wav";
             player.PlayLooping();
         }
 
